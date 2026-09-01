@@ -1,0 +1,181 @@
+@import "tailwindcss";
+@config "../tailwind.config.ts";
+
+:root {
+  --color-primary: #d5326b;
+  --color-secondary: #198989;
+  --color-accent: #eaa21c;
+  --color-cream: #fef2e4;
+  --color-ink: #1a1a1a;
+  --color-surface: #ffffff;
+  --color-muted: #4a4540;
+  --color-subtle: #6b6560;
+  --color-secondary-fg: #157575;
+}
+
+.dark {
+  --color-cream: #141414;
+  --color-ink: #f5f0ea;
+  --color-surface: #1f1f1f;
+  --color-muted: #d4cdc6;
+  --color-subtle: #a8a099;
+  --color-secondary-fg: #6dccc4;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-cream font-body text-ink antialiased;
+    margin: 0;
+    font-size: 1.0625rem;
+    line-height: 1.65;
+    transition: background-color 0.2s ease, color 0.2s ease;
+  }
+
+  #root {
+    @apply min-h-screen;
+  }
+
+  ::selection {
+    @apply bg-primary/25 text-ink;
+  }
+
+  .dark ::selection {
+    @apply bg-primary/40 text-white;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-heading font-bold text-ink;
+    line-height: 1.2;
+  }
+
+  .font-display {
+    letter-spacing: 0.03em;
+  }
+}
+
+@layer components {
+  .skip-link {
+    @apply absolute left-4 top-4 z-[100] -translate-y-16 rounded-full bg-secondary px-4 py-2 font-body text-sm font-semibold text-white transition-transform focus:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2;
+  }
+
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-secondary-fg focus-visible:ring-offset-2 focus-visible:ring-offset-cream;
+  }
+
+  .dark .focus-ring {
+    @apply focus-visible:ring-offset-cream;
+  }
+
+  .section-container {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6 md:px-8;
+  }
+
+  .section-padding {
+    @apply py-16 sm:py-20 md:py-28;
+  }
+
+  .card-surface {
+    @apply rounded-3xl border border-ink/10 bg-surface shadow-card transition-all duration-300;
+  }
+
+  .dark .card-surface {
+    @apply border-white/10;
+  }
+
+  .card-surface-hover {
+    @apply rounded-3xl border border-ink/10 bg-surface shadow-card transition-all duration-300 hover:-translate-y-1 hover:border-ink/15 hover:shadow-card-hover;
+  }
+
+  .dark .card-surface-hover {
+    @apply border-white/10 hover:border-white/15;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full bg-secondary/12 px-4 py-1.5 font-heading text-xs font-bold uppercase tracking-widest text-secondary-fg;
+  }
+
+  .eyebrow-on-dark {
+    @apply bg-white/12 text-accent;
+  }
+
+  .prose-body {
+    @apply font-body text-base leading-relaxed text-muted sm:text-lg;
+  }
+
+  .text-on-dark {
+    @apply text-inverse-fg;
+  }
+
+  .text-on-dark-muted {
+    @apply text-inverse-fg/80;
+  }
+
+  .interactive-link {
+    @apply text-muted transition-colors duration-200 hover:text-primary;
+  }
+
+  .dark .interactive-link {
+    @apply hover:text-accent;
+  }
+
+  .interactive-link-on-dark {
+    @apply text-inverse-fg/80 transition-colors duration-200 hover:text-white;
+  }
+}
+
+@media print {
+  .skip-link,
+  header,
+  footer,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 10pt;
+    color: #555;
+  }
+
+  a[href^="/"]::after,
+  a[href^="#"]::after {
+    content: "";
+  }
+
+  .card-surface,
+  .card-surface-hover {
+    box-shadow: none !important;
+    border: 1px solid #ccc !important;
+    break-inside: avoid;
+  }
+}
