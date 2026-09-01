@@ -1,18 +1,14 @@
-import { type ReactNode } from 'react'
+import { Outlet } from 'react-router-dom'
 import { SiteFeatures } from '../features/SiteFeatures'
 import { Footer } from './Footer'
 import { Header } from './Header'
 
-type LayoutProps = {
-  children: ReactNode
-}
-
-export function Layout({ children }: LayoutProps) {
+export function Layout() {
   return (
     <div className="flex min-h-screen flex-col">
       <Header />
       <main id="main-content" className="flex-1">
-        {children}
+        <Outlet />
       </main>
       <Footer />
       <SiteFeatures />

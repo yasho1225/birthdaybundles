@@ -15,52 +15,63 @@ export default {
         muted: 'var(--color-muted)',
         subtle: 'var(--color-subtle)',
         'secondary-fg': 'var(--color-secondary-fg)',
-        inverse: '#1A1A1A',
-        'inverse-fg': '#F5F0EA',
+        inverse: 'var(--color-inverse)',
+        'inverse-fg': 'var(--color-inverse-fg)',
+        'on-dark': 'var(--color-on-dark)',
+        'on-dark-muted': 'var(--color-on-dark-muted)',
       },
       fontFamily: {
-        display: ['Anton', 'Impact', 'sans-serif'],
-        heading: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
-        body: ['"Source Sans 3"', 'system-ui', 'sans-serif'],
-        quote: ['Rosario', 'Georgia', 'serif'],
-        'serif-accent': ['"Playfair Display"', 'Georgia', 'serif'],
+        display: ['Fraunces', 'Georgia', 'serif'],
+        heading: ['"Instrument Sans"', 'system-ui', 'sans-serif'],
+        body: ['"Instrument Sans"', 'system-ui', 'sans-serif'],
+        quote: ['Fraunces', 'Georgia', 'serif'],
       },
       fontSize: {
-        'display-sm': ['clamp(2.25rem,5vw,2.75rem)', { lineHeight: '1.08', letterSpacing: '0.02em' }],
-        'display-md': ['clamp(2.75rem,6vw,3.75rem)', { lineHeight: '1.05', letterSpacing: '0.02em' }],
-        'display-lg': ['clamp(3.25rem,7vw,5rem)', { lineHeight: '1', letterSpacing: '0.02em' }],
+        'display-sm': ['clamp(2rem,4.5vw,2.75rem)', { lineHeight: '1.12', letterSpacing: '-0.02em' }],
+        'display-md': ['clamp(2.5rem,5.5vw,3.5rem)', { lineHeight: '1.08', letterSpacing: '-0.025em' }],
+        'display-lg': ['clamp(3rem,7vw,4.75rem)', { lineHeight: '1.05', letterSpacing: '-0.03em' }],
+        'display-xl': ['clamp(3.25rem,8vw,5.5rem)', { lineHeight: '1.02', letterSpacing: '-0.035em' }],
       },
       spacing: {
         18: '4.5rem',
         22: '5.5rem',
+        30: '7.5rem',
       },
       maxWidth: {
         content: '72rem',
+        prose: '42rem',
       },
       borderRadius: {
-        '4xl': '2rem',
+        ui: '0.75rem',
+        pill: '9999px',
       },
       boxShadow: {
-        header: '0 4px 24px rgba(26, 26, 26, 0.06)',
-        card: '0 4px 24px rgba(26, 26, 26, 0.06)',
-        'card-hover': '0 12px 40px rgba(26, 26, 26, 0.1)',
-        glow: '0 0 60px rgba(213, 50, 107, 0.15)',
-        'glow-teal': '0 0 60px rgba(25, 137, 137, 0.15)',
+        header: '0 1px 0 rgba(26, 26, 26, 0.06)',
+        soft: '0 4px 24px -4px rgba(26, 26, 26, 0.08)',
+        lift: '0 12px 40px -12px rgba(26, 26, 26, 0.15)',
+        'soft-dark': '0 4px 24px -4px rgba(0, 0, 0, 0.4)',
       },
       backgroundImage: {
-        'hero-mesh':
-          'radial-gradient(circle at 15% 85%, rgba(213,50,107,0.12) 0%, transparent 45%), radial-gradient(circle at 85% 15%, rgba(25,137,137,0.12) 0%, transparent 45%), radial-gradient(circle at 50% 50%, rgba(234,162,28,0.08) 0%, transparent 60%)',
-        'cta-pattern':
-          'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%), radial-gradient(circle at 80% 50%, rgba(255,255,255,0.06) 0%, transparent 50%)',
+        'warm-glow':
+          'radial-gradient(ellipse 80% 60% at 20% 80%, rgba(213,50,107,0.08) 0%, transparent 55%), radial-gradient(ellipse 60% 50% at 85% 20%, rgba(25,137,137,0.07) 0%, transparent 50%)',
+        'cta-glow':
+          'radial-gradient(circle at 30% 50%, rgba(255,255,255,0.12) 0%, transparent 50%)',
+      },
+      transitionTimingFunction: {
+        out: 'cubic-bezier(0.16, 1, 0.3, 1)',
       },
       animation: {
-        'float-slow': 'float 8s ease-in-out infinite',
-        'float-delayed': 'float 8s ease-in-out 2s infinite',
+        'fade-up': 'fadeUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+        'hero-scale': 'heroScale 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards',
       },
       keyframes: {
-        float: {
-          '0%, 100%': { transform: 'translateY(0)' },
-          '50%': { transform: 'translateY(-12px)' },
+        fadeUp: {
+          '0%': { opacity: '0', transform: 'translateY(20px)' },
+          '100%': { opacity: '1', transform: 'translateY(0)' },
+        },
+        heroScale: {
+          '0%': { transform: 'scale(1.04)' },
+          '100%': { transform: 'scale(1)' },
         },
       },
     },

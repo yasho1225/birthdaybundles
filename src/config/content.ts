@@ -1,10 +1,11 @@
+import type { IconName } from '../types/icons'
 import { IMAGES, PLACEHOLDER_IMAGES, imagePair } from './images'
 
 export const SITE = {
   name: 'Birthday Bundles',
   tagline: 'Every kid deserves a birthday to remember',
   mission:
-    'We deliver complete birthday bundles — cake, decorations, gifts, and party supplies — to children and families who might otherwise go without a celebration.',
+    'We deliver complete birthday bundles: cake, decorations, gifts, and party supplies for children and families who might otherwise go without a celebration.',
   missionBlurb:
     'Birthday Bundles is a community-powered nonprofit bringing joy, dignity, and celebration to children who deserve to feel special on their birthday.',
   trustCopy: '100% of donations fund birthday bundles for families in need.',
@@ -25,11 +26,32 @@ export const IMPACT_STATS = [
   { value: '12', label: 'Communities' },
 ] as const
 
+export const HOW_IT_WORKS = [
+  {
+    icon: 'users' as IconName,
+    title: 'Families are referred',
+    description:
+      'Schools, shelters, and community partners connect us with children who deserve a celebration.',
+  },
+  {
+    icon: 'package' as IconName,
+    title: 'We assemble each bundle',
+    description:
+      'Volunteers pack cake, decorations, a gift, and party supplies tailored to each child.',
+  },
+  {
+    icon: 'truck' as IconName,
+    title: 'Joy is delivered',
+    description:
+      'Bundles arrive with dignity and care, so every child can celebrate their milestone.',
+  },
+] as const
+
 export const BUNDLE_ITEMS = [
-  { icon: '🎂', label: 'Birthday cake', description: 'Homemade or store-bought, always made with love' },
-  { icon: '🎈', label: 'Decorations', description: 'Balloons, banners, and festive party décor' },
-  { icon: '🎁', label: 'Small gift', description: 'Age-appropriate present chosen for each child' },
-  { icon: '🎉', label: 'Party supplies', description: 'Plates, cups, napkins, and everything to celebrate' },
+  { icon: 'cake' as IconName, label: 'Birthday cake', description: 'Homemade or store-bought, always made with love' },
+  { icon: 'balloon' as IconName, label: 'Decorations', description: 'Balloons, banners, and festive party décor' },
+  { icon: 'gift' as IconName, label: 'Small gift', description: 'Age-appropriate present chosen for each child' },
+  { icon: 'party' as IconName, label: 'Party supplies', description: 'Plates, cups, napkins, and everything to celebrate' },
 ] as const
 
 export const DONATION_TIERS = [
@@ -48,7 +70,7 @@ export const DONATION_TIERS = [
   {
     amount: 75,
     title: 'Full Birthday Bundle',
-    description: 'Sponsors one complete birthday celebration — cake, gift, décor, and supplies.',
+    description: 'Sponsors one complete birthday celebration with cake, gift, décor, and supplies.',
     highlighted: true,
     badge: 'Most Popular',
   },
@@ -88,14 +110,14 @@ export const VOLUNTEER_ROLES = [
   {
     title: 'Volunteers',
     description:
-      'Help pack bundles, deliver celebrations to families, and support community events. No experience needed — just a big heart.',
+      'Help pack bundles, deliver celebrations to families, and support community events. No experience needed. Just a big heart.',
     cta: 'Sign Up to Volunteer',
     linkKey: 'volunteerForm' as const,
   },
   {
     title: 'Bakers',
     description:
-      'Bake homemade cakes or coordinate store-bought cakes for upcoming birthdays. Flexible schedule — bake as often as you like.',
+      'Bake homemade cakes or coordinate store-bought cakes for upcoming birthdays. Flexible schedule. Bake as often as you like.',
     cta: 'Sign Up to Bake',
     linkKey: 'bakerOrderForm' as const,
   },
@@ -125,9 +147,9 @@ export const VOLUNTEER_FAQ = [
 ] as const
 
 export const ABOUT_VALUES = [
-  { title: 'Dignity', description: 'Every child deserves to feel celebrated, not singled out.', icon: '💛' },
-  { title: 'Community', description: 'Neighbors helping neighbors — one birthday at a time.', icon: '🤝' },
-  { title: 'Joy', description: 'Birthdays are milestones. We make sure no child misses theirs.', icon: '🎉' },
+  { title: 'Dignity', description: 'Every child deserves to feel celebrated, not singled out.', icon: 'heart' as IconName },
+  { title: 'Community', description: 'Neighbors helping neighbors, one birthday at a time.', icon: 'community' as IconName },
+  { title: 'Joy', description: 'Birthdays are milestones. We make sure no child misses theirs.', icon: 'sparkle' as IconName },
 ] as const
 
 export const TEAM_MEMBERS = [
@@ -171,7 +193,7 @@ export const ORIGIN_STORY = [
   },
   {
     title: 'Growing through community',
-    body: 'Word spread. Bakers volunteered. Families referred other families. Schools and shelters reached out. What began as a grassroots effort became Birthday Bundles — a nonprofit dedicated to making sure no child goes without a birthday.',
+    body: 'Word spread. Bakers volunteered. Families referred other families. Schools and shelters reached out. What began as a grassroots effort became Birthday Bundles, a nonprofit dedicated to making sure no child goes without a birthday.',
   },
   {
     title: 'Where we are today',
@@ -180,7 +202,7 @@ export const ORIGIN_STORY = [
 ] as const
 
 export const STORY_QUOTE = {
-  text: 'A birthday is not a luxury — it is a milestone every child deserves to celebrate.',
+  text: 'A birthday is not a luxury. It is a milestone every child deserves to celebrate.',
   attribution: 'The Birthday Bundles founders',
 } as const
 

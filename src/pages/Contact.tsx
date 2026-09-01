@@ -1,10 +1,11 @@
-import { useRef, useState, type FormEvent } from 'react'
+import { useEffect, useRef, useState, type FormEvent } from 'react'
 import { LINKS } from '../config/links'
 import { CONTACT_INFO } from '../config/content'
 import { Button } from '../components/ui/Button'
 import { ConfirmModal } from '../components/ui/ConfirmModal'
 import { CopyButton } from '../components/ui/CopyButton'
 import { ExternalLink } from '../components/ui/ExternalLink'
+import { Icon } from '../components/ui/Icon'
 import { PageHeader } from '../components/ui/PageHeader'
 import { ScrollReveal } from '../components/ui/ScrollReveal'
 import { SectionHeading } from '../components/ui/SectionHeading'
@@ -25,10 +26,12 @@ function InstagramIcon() {
 
 export function Contact() {
   const formRef = useRef<HTMLFormElement>(null)
+  const successRef = useRef<HTMLDivElement>(null)
   const [errors, setErrors] = useState<FormErrors>({})
   const [submitted, setSubmitted] = useState(false)
   const [showConfirm, setShowConfirm] = useState(false)
   const [formError, setFormError] = useState<string | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
 
   const validate = (formData: FormData): FormErrors => {
     const newErrors: FormErrors = {}
@@ -57,6 +60,14 @@ export function Contact() {
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors)
       setFormError('Please fix the errors below before sending your message.')
+      const firstErrorId = validationErrors.name
+        ? 'name'
+        : validationErrors.email
+          ? 'email'
+          : 'message'
+      requestAnimationFrame(() => {
+        document.getElementById(firstErrorId)?.focus()
+      })
       return
     }
 
@@ -66,47 +77,53 @@ export function Contact() {
 
   const confirmSubmit = () => {
     setShowConfirm(false)
+    setIsSubmitting(true)
     formRef.current?.submit()
     setSubmitted(true)
+    setIsSubmitting(false)
+    requestAnimationFrame(() => successRef.current?.focus())
   }
 
+  useEffect(() => {
+    if (submitted) successRef.current?.focus()
+  }, [submitted])
+
   const inputClass = (hasError: boolean) =>
-    `mt-2 w-full rounded-xl border bg-surface px-4 py-3.5 font-body text-ink transition-colors focus-ring ${
-      hasError ? 'border-primary' : 'border-ink/15 focus:border-secondary dark:border-white/15'
-    }`
+    `input-field ${hasError ? 'input-field-error' : ''}`
 
   const errorCount = Object.keys(errors).length
 
   return (
     <>
       <PageHeader
-        eyebrow="Say hello"
-        title="Contact Us"
+        title="Contact us"
         subtitle="Have a question, partnership idea, or want to get involved? We'd love to hear from you."
       />
 
       <section aria-labelledby="contact-form-heading" className="section-padding">
-        <div className="section-container">
-          <div className="grid gap-12 lg:grid-cols-5">
-            <ScrollReveal className="lg:col-span-3">
+        <div className="section-container-wide">
+          <div className="grid gap-8 lg:grid-cols-12">
+            <ScrollReveal className="surface p-8 lg:col-span-8 lg:p-10">
               <SectionHeading
                 id="contact-form-heading"
-                eyebrow="Write to us"
-                title="Send a Message"
+                title="Send a message"
                 subtitle="We'll get back to you within 2 business days."
-                align="left"
               />
 
               {submitted ? (
                 <div
-                  className="mt-8 rounded-3xl border border-secondary/30 bg-secondary/10 p-8 dark:bg-secondary/20"
+                  ref={successRef}
+                  tabIndex={-1}
+                  className="mt-8 rounded-ui border border-secondary/25 bg-secondary/8 p-8 outline-none"
                   role="status"
                 >
                   <div className="flex items-start gap-4">
-                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary text-white" aria-hidden="true">✓</span>
+                    <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-secondary text-white">
+                      <Icon name="check" size={20} />
+                    </span>
                     <div>
-                      <p className="font-heading text-lg font-bold text-secondary-fg">
-                        Message sent successfully!
+                      <p className="font-heading text-lg font-semibold text-secondary-fg">
+                        Message sent successfully
                       </p>
                       <p className="mt-2 font-body text-muted">
                         Thank you for reaching out. We will get back to you within 2 business days.
@@ -125,21 +142,22 @@ export function Contact() {
                 >
                   {formError && (
                     <div
-                      className="rounded-2xl border border-primary/30 bg-primary/5 p-4 dark:bg-primary/10"
+                      className="rounded-ui border border-primary/25 bg-primary/5 p-4"
                       role="alert"
                       aria-live="assertive"
                     >
-                      <p className="font-heading text-sm font-bold text-primary">{formError}</p>
+                      <p className="font-heading text-sm font-semibold text-primary">{formError}</p>
                       {errorCount > 0 && (
                         <p className="mt-1 font-body text-sm text-muted">
-                          {errorCount} field{errorCount > 1 ? 's' : ''} need{errorCount === 1 ? 's' : ''} your attention.
+                          {errorCount} field{errorCount > 1 ? 's' : ''} need
+                          {errorCount === 1 ? 's' : ''} your attention.
                         </p>
                       )}
                     </div>
                   )}
 
                   <div>
-                    <label htmlFor="name" className="font-heading text-sm font-bold text-ink">
+                    <label htmlFor="name" className="label-text">
                       Name <span className="text-primary" aria-hidden="true">*</span>
                     </label>
                     <input
@@ -153,14 +171,14 @@ export function Contact() {
                       className={inputClass(!!errors.name)}
                     />
                     {errors.name && (
-                      <p id="name-error" className="mt-1.5 text-sm text-primary" role="alert">
+                      <p id="name-error" className="error-text" role="alert">
                         {errors.name}
                       </p>
                     )}
                   </div>
 
                   <div>
-                    <label htmlFor="email" className="font-heading text-sm font-bold text-ink">
+                    <label htmlFor="email" className="label-text">
                       Email <span className="text-primary" aria-hidden="true">*</span>
                     </label>
                     <input
@@ -174,14 +192,14 @@ export function Contact() {
                       className={inputClass(!!errors.email)}
                     />
                     {errors.email && (
-                      <p id="email-error" className="mt-1.5 text-sm text-primary" role="alert">
+                      <p id="email-error" className="error-text" role="alert">
                         {errors.email}
                       </p>
                     )}
                   </div>
 
                   <div>
-                    <label htmlFor="message" className="font-heading text-sm font-bold text-ink">
+                    <label htmlFor="message" className="label-text">
                       Message <span className="text-primary" aria-hidden="true">*</span>
                     </label>
                     <textarea
@@ -195,21 +213,21 @@ export function Contact() {
                       className={`${inputClass(!!errors.message)} resize-y`}
                     />
                     {errors.message && (
-                      <p id="message-error" className="mt-1.5 text-sm text-primary" role="alert">
+                      <p id="message-error" className="error-text" role="alert">
                         {errors.message}
                       </p>
                     )}
                   </div>
 
-                  <Button type="submit" size="lg">
-                    Send Message
+                  <Button type="submit" size="lg" disabled={isSubmitting} aria-busy={isSubmitting}>
+                    {isSubmitting ? 'Sending…' : 'Send message'}
                   </Button>
 
                   <p className="font-body text-sm text-subtle">
                     Prefer email?{' '}
                     <a
                       href={LINKS.contactEmail}
-                      className="interactive-link text-secondary-fg underline focus-ring rounded"
+                      className="interactive-link text-secondary-fg underline focus-ring"
                     >
                       {CONTACT_INFO.email}
                     </a>
@@ -218,18 +236,16 @@ export function Contact() {
               )}
             </ScrollReveal>
 
-            <ScrollReveal delay={120} className="lg:col-span-2">
-              <div className="card-surface h-full p-8">
-                <h2 className="font-heading text-lg font-bold text-ink">Get in Touch</h2>
+            <ScrollReveal delay={120} className="lg:col-span-4">
+              <aside className="surface h-full p-8 lg:p-10">
+                <h2 className="font-display text-xl text-ink">Get in touch</h2>
                 <dl className="mt-6 space-y-5">
                   <div>
-                    <dt className="font-heading text-xs font-bold uppercase tracking-widest text-subtle">
-                      Email
-                    </dt>
+                    <dt className="font-heading text-sm font-medium text-subtle">Email</dt>
                     <dd className="mt-1 flex flex-wrap items-center gap-2">
                       <a
                         href={LINKS.contactEmail}
-                        className="interactive-link font-body text-secondary-fg focus-ring rounded"
+                        className="interactive-link font-body text-secondary-fg focus-ring"
                       >
                         {CONTACT_INFO.email}
                       </a>
@@ -237,15 +253,11 @@ export function Contact() {
                     </dd>
                   </div>
                   <div>
-                    <dt className="font-heading text-xs font-bold uppercase tracking-widest text-subtle">
-                      Phone
-                    </dt>
+                    <dt className="font-heading text-sm font-medium text-subtle">Phone</dt>
                     <dd className="mt-1 font-body text-ink">{CONTACT_INFO.phone}</dd>
                   </div>
                   <div>
-                    <dt className="font-heading text-xs font-bold uppercase tracking-widest text-subtle">
-                      Address
-                    </dt>
+                    <dt className="font-heading text-sm font-medium text-subtle">Address</dt>
                     <dd className="mt-1 font-body leading-relaxed text-ink">
                       {CONTACT_INFO.address}
                     </dd>
@@ -253,18 +265,16 @@ export function Contact() {
                 </dl>
 
                 <div className="mt-8 border-t border-ink/8 pt-8 dark:border-white/10">
-                  <h3 className="font-heading text-sm font-bold uppercase tracking-widest text-subtle">
-                    Follow Us
-                  </h3>
+                  <h3 className="font-heading text-sm font-medium text-subtle">Follow us</h3>
                   <ExternalLink
                     href={LINKS.instagram}
-                    className="interactive-link mt-4 inline-flex items-center gap-2.5 font-body font-bold text-secondary-fg focus-ring rounded"
+                    className="interactive-link mt-4 inline-flex items-center gap-2.5 font-body font-semibold text-secondary-fg focus-ring"
                   >
                     <InstagramIcon />
                     @birthdaybundles
                   </ExternalLink>
                 </div>
-              </div>
+              </aside>
             </ScrollReveal>
           </div>
         </div>
@@ -274,7 +284,7 @@ export function Contact() {
         isOpen={showConfirm}
         title="Send your message?"
         message="We'll receive your message and respond within 2 business days."
-        confirmLabel="Send Message"
+        confirmLabel="Send message"
         onConfirm={confirmSubmit}
         onCancel={() => setShowConfirm(false)}
       />

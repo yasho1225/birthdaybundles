@@ -18,8 +18,8 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative overflow-hidden bg-inverse text-inverse-fg no-print">
-      <div className="absolute inset-0 bg-hero-mesh opacity-40" aria-hidden="true" />
+    <footer className="relative overflow-hidden bg-inverse text-on-dark no-print">
+      <div className="absolute inset-0 bg-warm-glow opacity-30" aria-hidden="true" />
 
       <div className="section-container relative py-16 md:py-20">
         <div className="grid gap-12 md:grid-cols-12">
@@ -29,14 +29,12 @@ export function Footer() {
               {SITE.missionBlurb}
             </p>
             <Button as={Link} to="/donate" size="sm" className="mt-6">
-              Donate Now
+              Donate now
             </Button>
           </div>
 
           <div className="md:col-span-3">
-            <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-inverse-fg/60">
-              Quick Links
-            </h2>
+            <h2 className="font-heading text-sm font-semibold text-on-dark">Quick links</h2>
             <ul className="mt-5 space-y-3">
               {[
                 { label: 'Donate', to: '/donate' },
@@ -47,7 +45,7 @@ export function Footer() {
                 <li key={link.to}>
                   <Link
                     to={link.to}
-                    className="interactive-link-on-dark font-body text-sm focus-ring rounded"
+                    className="interactive-link-on-dark font-body text-sm focus-ring rounded-ui"
                   >
                     {link.label}
                   </Link>
@@ -57,14 +55,12 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-4">
-            <h2 className="font-heading text-xs font-bold uppercase tracking-widest text-inverse-fg/60">
-              Connect
-            </h2>
+            <h2 className="font-heading text-sm font-semibold text-on-dark">Connect</h2>
             <ul className="mt-5 space-y-3">
               <li>
                 <ExternalLink
                   href={LINKS.instagram}
-                  className="interactive-link-on-dark inline-flex items-center gap-2.5 font-body text-sm focus-ring rounded"
+                  className="interactive-link-on-dark inline-flex items-center gap-2.5 font-body text-sm focus-ring rounded-ui"
                 >
                   <InstagramIcon />
                   Instagram
@@ -73,7 +69,7 @@ export function Footer() {
               <li>
                 <ExternalLink
                   href={LINKS.gofundme}
-                  className="interactive-link-on-dark font-body text-sm focus-ring rounded"
+                  className="interactive-link-on-dark font-body text-sm focus-ring rounded-ui"
                 >
                   GoFundMe
                 </ExternalLink>
@@ -81,9 +77,9 @@ export function Footer() {
               <li>
                 <ExternalLink
                   href={LINKS.volunteerForm}
-                  className="interactive-link-on-dark font-body text-sm focus-ring rounded"
+                  className="interactive-link-on-dark font-body text-sm focus-ring rounded-ui"
                 >
-                  Volunteer Sign-Up
+                  Volunteer sign-up
                 </ExternalLink>
               </li>
             </ul>
@@ -91,12 +87,10 @@ export function Footer() {
         </div>
 
         <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-          <p className="font-body text-sm text-inverse-fg/55">
+          <p className="font-body text-sm text-on-dark-muted">
             &copy; {year} Birthday Bundles. All rights reserved.
           </p>
-          <p className="font-body text-sm text-inverse-fg/55">
-            Last updated {LAST_UPDATED}
-          </p>
+          <p className="font-body text-sm text-on-dark-muted">Last updated {LAST_UPDATED}</p>
         </div>
       </div>
     </footer>

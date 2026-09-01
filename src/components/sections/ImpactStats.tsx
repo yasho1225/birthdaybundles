@@ -10,19 +10,18 @@ export function ImpactStats() {
         <ScrollReveal>
           <SectionHeading
             id="impact-heading"
-            eyebrow="By the numbers"
-            title="Our Impact"
+            title="Our impact"
             subtitle="Together, we're making birthdays happen for families across our community."
           />
         </ScrollReveal>
 
-        <div className="mt-10 grid grid-cols-2 gap-3 sm:gap-4 md:mt-14 md:grid-cols-4 md:gap-6">
-          {IMPACT_STATS.map((stat, index) => (
-            <ScrollReveal key={stat.label} delay={index * 80}>
-              <StatCard value={stat.value} label={stat.label} />
-            </ScrollReveal>
-          ))}
-        </div>
+        <ScrollReveal delay={80}>
+          <div className="mt-10 grid grid-cols-2 gap-4 md:mt-14 md:grid-cols-4">
+            {IMPACT_STATS.map((stat) => (
+              <StatCard key={stat.label} value={stat.value} label={stat.label} />
+            ))}
+          </div>
+        </ScrollReveal>
       </div>
     </section>
   )

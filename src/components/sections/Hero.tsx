@@ -1,87 +1,66 @@
 import { Link } from 'react-router-dom'
-import { HERO_IMAGE, IMPACT_STATS } from '../../config/content'
+import { HERO_IMAGE, SITE } from '../../config/content'
 import { Button } from '../ui/Button'
+import { Icon } from '../ui/Icon'
 import { OptimizedImage } from '../ui/OptimizedImage'
 
 export function Hero() {
-  const previewStats = IMPACT_STATS.slice(0, 2)
-
   return (
-    <section aria-labelledby="hero-heading" className="relative overflow-hidden">
-      <div className="absolute inset-0 bg-cream" aria-hidden="true" />
-      <div className="absolute inset-0 bg-hero-mesh" aria-hidden="true" />
-      <div
-        className="absolute -right-32 top-20 h-96 w-96 rounded-full bg-primary/10 blur-3xl"
-        aria-hidden="true"
-      />
-      <div
-        className="absolute -left-24 bottom-20 h-72 w-72 rounded-full bg-secondary/10 blur-3xl"
-        aria-hidden="true"
-      />
+    <section aria-labelledby="hero-heading" className="relative min-h-[92vh] overflow-hidden">
+      <div className="absolute inset-0 bg-warm-glow" aria-hidden="true" />
 
-      <div className="section-container relative grid items-center gap-10 py-16 sm:gap-12 sm:py-20 md:grid-cols-2 md:py-24 lg:gap-16 lg:py-28">
-        <div className="order-2 text-center md:order-1 md:text-left">
-          <span className="eyebrow">Nonprofit · Community · Celebration</span>
+      <div className="section-container-wide relative grid min-h-[92vh] items-center gap-10 py-20 lg:grid-cols-12 lg:gap-16 lg:py-24">
+        <div className="flex flex-col justify-center lg:col-span-5 xl:col-span-5">
+          <p className="animate-fade-up font-heading text-sm font-semibold text-secondary-fg">
+            {SITE.trustCopy}
+          </p>
           <h1
             id="hero-heading"
-            className="mt-5 font-display text-display-sm uppercase text-ink md:mt-6 md:text-display-md lg:text-display-lg"
+            className="animate-fade-up mt-5 font-display text-display-lg text-ink [animation-delay:80ms]"
           >
-            Every Kid Deserves a{' '}
-            <span className="text-primary">Birthday</span> to Remember
+            Every child deserves a birthday to remember
           </h1>
-          <p className="prose-body mx-auto mt-5 max-w-xl md:mx-0 md:mt-6">
-            We deliver complete birthday bundles — cake, decorations, and small gifts — to
-            children and families who need a little extra joy on their special day.
+          <p className="animate-fade-up prose-body mt-6 [animation-delay:160ms]">
+            {SITE.missionBlurb}
           </p>
-
-          <div className="mt-8 flex flex-col items-center gap-3 sm:flex-row md:mt-10 md:justify-start">
+          <div className="animate-fade-up mt-10 flex flex-col gap-3 sm:flex-row [animation-delay:240ms]">
             <Button as={Link} to="/donate" size="lg" className="w-full sm:w-auto">
-              Donate
+              Sponsor a bundle
             </Button>
-            <Button as={Link} to="/donate" variant="secondary" size="lg" className="w-full sm:w-auto">
-              Sponsor a Bundle
+            <Button as={Link} to="/volunteer" variant="outline" size="lg" className="w-full sm:w-auto">
+              Volunteer with us
             </Button>
           </div>
-
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-6 md:mt-10 md:justify-start">
-            {previewStats.map((stat, index) => (
-              <div key={stat.label} className="flex items-center gap-6">
-                {index > 0 && (
-                  <div className="hidden h-8 w-px bg-ink/15 sm:block" aria-hidden="true" />
-                )}
-                <div className="text-center md:text-left">
-                  <p className="font-display text-2xl text-primary">{stat.value}</p>
-                  <p className="font-body text-xs font-bold uppercase tracking-wider text-muted">
-                    {stat.label}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+          <p className="animate-fade-up mt-8 flex items-center gap-2 font-body text-sm text-muted [animation-delay:320ms]">
+            <span className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary/10 text-secondary-fg">
+              <Icon name="heart" size={16} />
+            </span>
+            Over 500 bundles delivered across 12 communities
+          </p>
         </div>
 
-        <div className="order-1 md:order-2">
-          <div className="relative mx-auto max-w-lg">
+        <div className="relative lg:col-span-7 xl:col-span-7">
+          <div className="relative overflow-hidden rounded-[1.25rem] shadow-lift">
+            <OptimizedImage
+              src={HERO_IMAGE.src}
+              fallback={HERO_IMAGE.fallback}
+              alt="Volunteers preparing a birthday celebration bundle for a family"
+              className="aspect-[4/5] w-full animate-hero-scale object-cover sm:aspect-[5/4] lg:aspect-[4/5] lg:min-h-[560px]"
+              loading="eager"
+              fetchPriority="high"
+            />
             <div
-              className="absolute -inset-3 rounded-4xl bg-gradient-to-br from-secondary/20 via-primary/10 to-accent/20"
+              className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent"
               aria-hidden="true"
             />
-            <div className="relative overflow-hidden rounded-4xl border border-white/40 shadow-glow">
-              <OptimizedImage
-                src={HERO_IMAGE.src}
-                fallback={HERO_IMAGE.fallback}
-                alt="Volunteers preparing a birthday celebration bundle for a family"
-                className="aspect-[4/3] w-full object-cover md:aspect-square"
-                loading="eager"
-                fetchPriority="high"
-              />
-            </div>
-            <div className="absolute -bottom-4 left-4 right-4 rounded-2xl border border-ink/5 bg-surface p-4 shadow-card-hover sm:left-auto sm:right-4 sm:max-w-xs">
-              <p className="font-quote text-sm font-bold text-ink">
+            <figure className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
+              <blockquote className="font-quote text-lg italic leading-snug text-on-dark sm:text-xl">
                 &ldquo;Her first real birthday party.&rdquo;
-              </p>
-              <p className="mt-1 font-body text-xs text-muted">— A grateful parent</p>
-            </div>
+              </blockquote>
+              <figcaption className="mt-2 font-heading text-sm font-medium text-on-dark-muted">
+                A grateful parent
+              </figcaption>
+            </figure>
           </div>
         </div>
       </div>

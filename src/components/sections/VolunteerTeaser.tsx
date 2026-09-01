@@ -1,66 +1,78 @@
 import { Link } from 'react-router-dom'
-import { IMAGES, PLACEHOLDER_IMAGES, imagePair } from '../../config/images'
+import { LINKS } from '../../config/links'
+import { appendUtmToUrl } from '../../utils/utm'
+import { VOLUNTEER_ROLES } from '../../config/content'
 import { Button } from '../ui/Button'
+import { Icon } from '../ui/Icon'
 import { OptimizedImage } from '../ui/OptimizedImage'
 import { ScrollReveal } from '../ui/ScrollReveal'
 import { SectionHeading } from '../ui/SectionHeading'
 
-const volunteerImages = [
-  {
-    ...imagePair(IMAGES.volunteer.packing, PLACEHOLDER_IMAGES.volunteer.packing),
-    alt: 'Volunteer packing birthday supplies',
-  },
-  {
-    ...imagePair(IMAGES.volunteer.baking, PLACEHOLDER_IMAGES.volunteer.baking),
-    alt: 'Baker decorating a birthday cake',
-  },
-]
+const TEASER_IMAGES = [
+  '/images/placeholders/volunteer-1.svg',
+  '/images/placeholders/volunteer-2.svg',
+  '/images/placeholders/gallery-1.svg',
+  '/images/placeholders/gallery-2.svg',
+] as const
 
 export function VolunteerTeaser() {
   return (
-    <section aria-labelledby="volunteer-teaser-heading" className="section-padding">
-      <div className="section-container">
+    <section aria-labelledby="volunteer-teaser-heading" className="section-padding bg-surface">
+      <div className="section-container-wide">
         <ScrollReveal>
-          <div className="overflow-hidden rounded-4xl bg-gradient-to-br from-secondary to-[#127070] p-6 sm:p-8 md:p-14">
-            <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-16">
-              <div>
-                <SectionHeading
-                  eyebrow="Get involved"
-                  title="Join the Celebration"
-                  subtitle="Whether you bake cakes or deliver bundles, your time makes birthdays happen."
-                  align="left"
-                  light
-                />
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <Button as={Link} to="/volunteer" variant="white" size="md">
-                    Become a Volunteer
-                  </Button>
-                  <Button
-                    as={Link}
-                    to="/volunteer"
-                    variant="ghost"
-                    size="md"
-                    className="border-2 border-white/30 text-white hover:bg-white/10"
-                  >
-                    Sign Up to Bake
-                  </Button>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-3 sm:gap-4">
-                {volunteerImages.map((image, index) => (
-                  <OptimizedImage
-                    key={image.alt}
-                    src={image.src}
-                    fallback={image.fallback}
-                    alt={image.alt}
-                    className={`aspect-square rounded-2xl object-cover shadow-card ${index === 1 ? 'mt-6 sm:mt-8' : ''}`}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
+          <SectionHeading
+            id="volunteer-teaser-heading"
+            title="Join the celebration"
+            subtitle="Pack bundles, bake cakes, or deliver joy — every hour makes a child's birthday unforgettable."
+          />
         </ScrollReveal>
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-12 lg:gap-8">
+          <div className="grid grid-cols-2 gap-3 lg:col-span-5">
+            {TEASER_IMAGES.map((src, index) => (
+              <ScrollReveal key={src} delay={index * 50}>
+                <div className="overflow-hidden rounded-ui">
+                  <OptimizedImage
+                    src={src}
+                    fallback={src}
+                    alt={`Community volunteer photo ${index + 1}`}
+                    className="aspect-square w-full object-cover transition-transform duration-500 ease-out hover:scale-[1.03]"
+                  />
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+
+          <div className="flex flex-col gap-6 lg:col-span-7">
+            {VOLUNTEER_ROLES.map((role, index) => (
+              <ScrollReveal key={role.title} delay={100 + index * 80}>
+                <article className="surface flex flex-col gap-5 p-8 sm:flex-row sm:items-center sm:justify-between">
+                  <div>
+                    <h3 className="font-display text-2xl text-ink">{role.title}</h3>
+                    <p className="mt-2 max-w-md font-body leading-relaxed text-muted">
+                      {role.description}
+                    </p>
+                  </div>
+                  <Button
+                    as="a"
+                    href={appendUtmToUrl(LINKS[role.linkKey])}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variant={index === 0 ? 'secondary' : 'primary'}
+                    className="shrink-0"
+                  >
+                    {role.cta}
+                    <Icon name="external" size={16} />
+                  </Button>
+                </article>
+              </ScrollReveal>
+            ))}
+            <Button as={Link} to="/volunteer" variant="ghost" className="w-fit">
+              Learn more about volunteering
+              <Icon name="arrow-right" size={16} />
+            </Button>
+          </div>
+        </div>
       </div>
     </section>
   )

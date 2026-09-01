@@ -1,5 +1,5 @@
 import { Hero } from '../components/sections/Hero'
-import { ImpactStats } from '../components/sections/ImpactStats'
+import { HowItWorks } from '../components/sections/HowItWorks'
 import { MissionOverview } from '../components/sections/MissionOverview'
 import { StoryTeaser } from '../components/sections/StoryTeaser'
 import { VolunteerTeaser } from '../components/sections/VolunteerTeaser'
@@ -10,7 +10,7 @@ export function Home() {
   return (
     <>
       <Hero />
-      <ImpactStats />
+      <HowItWorks />
       <MissionOverview />
       <StoryTeaser />
       <VolunteerTeaser />

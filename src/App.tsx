@@ -2,7 +2,6 @@ import { lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
 import { ThemeProvider } from './context/ThemeContext'
 import { Layout } from './components/layout/Layout'
-import { PageLoader } from './components/features/PageLoader'
 import { Home } from './pages/Home'
 import { captureUtmParams } from './utils/utm'
 
@@ -23,20 +22,13 @@ function ScrollToTop() {
   return null
 }
 
-function AppRoutes() {
+function PageLoader() {
   return (
-    <>
-      <ScrollToTop />
-      <Suspense fallback={<PageLoader />}>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/donate" element={<Donate />} />
-          <Route path="/volunteer" element={<Volunteer />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </Suspense>
-    </>
+    <div className="flex min-h-[50vh] items-center justify-center">
+      <p className="font-heading text-sm font-bold uppercase tracking-wider text-ink/40">
+        Loading...
+      </p>
+    </div>
   )
 }
 
@@ -48,9 +40,44 @@ export default function App() {
   return (
     <ThemeProvider>
       <BrowserRouter>
-        <Layout>
-          <AppRoutes />
-        </Layout>
+        <ScrollToTop />
+        <Routes>
+          <Route element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route
+              path="donate"
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <Donate />
+                </Suspense>
+              }
+            />
+            <Route
+              path="volunteer"
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <Volunteer />
+                </Suspense>
+              }
+            />
+            <Route
+              path="about"
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <About />
+                </Suspense>
+              }
+            />
+            <Route
+              path="contact"
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <Contact />
+                </Suspense>
+              }
+            />
+          </Route>
+        </Routes>
       </BrowserRouter>
     </ThemeProvider>
   )

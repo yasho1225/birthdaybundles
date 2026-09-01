@@ -60,7 +60,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
     <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label="Navigation menu">
       <button
         type="button"
-        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+        className="absolute inset-0 bg-ink/50 backdrop-blur-sm"
         onClick={onClose}
         aria-label="Close menu"
       />
@@ -92,7 +92,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
                 onClick={onClose}
                 className={({ isActive }) =>
                   `block rounded-xl px-4 py-3.5 font-body text-base font-bold transition-colors focus-ring ${
-                    isActive ? 'bg-secondary/10 text-secondary-fg' : 'text-ink hover:bg-ink/5'
+                    isActive ? 'bg-secondary/10 text-secondary' : 'text-ink hover:bg-ink/5'
                   }`
                 }
               >

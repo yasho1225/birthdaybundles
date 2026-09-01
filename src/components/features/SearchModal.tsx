@@ -47,7 +47,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         onClick={onClose}
         aria-label="Close search"
       />
-      <div className="relative w-full max-w-xl overflow-hidden rounded-3xl border border-ink/10 bg-surface shadow-card-hover dark:border-white/10">
+      <div className="surface relative w-full max-w-xl overflow-hidden shadow-lift">
         <div className="border-b border-ink/8 p-4 dark:border-white/10">
           <label htmlFor="site-search" className="sr-only">
             Search the site
@@ -59,7 +59,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search pages, bundles, FAQ..."
-            className="w-full rounded-xl border border-ink/15 bg-cream px-4 py-3 font-body text-ink focus-ring dark:border-white/15"
+            className="input-field"
             autoComplete="off"
           />
         </div>
@@ -75,13 +75,13 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
                 type="button"
                 role="option"
                 onClick={() => goTo(result.path)}
-                className="w-full rounded-xl px-4 py-3 text-left transition-colors hover:bg-cream focus-ring dark:hover:bg-white/5"
+                className="w-full rounded-ui px-4 py-3 text-left transition-colors duration-200 ease-out hover:bg-cream focus-ring dark:hover:bg-white/5"
               >
                 <div className="flex items-center justify-between gap-2">
                   <span className="font-heading text-sm font-bold text-ink">
                     {result.title}
                   </span>
-                  <span className="shrink-0 rounded-full bg-secondary/10 px-2 py-0.5 font-body text-xs font-bold text-secondary-fg">
+                  <span className="shrink-0 bg-secondary/10 px-2 py-0.5 font-body text-xs font-bold text-secondary-fg">
                     {result.category}
                   </span>
                 </div>

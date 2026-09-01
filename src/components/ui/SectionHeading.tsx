@@ -1,49 +1,32 @@
 type SectionHeadingProps = {
   id?: string
-  eyebrow?: string
   title: string
   subtitle?: string
   align?: 'left' | 'center'
-  light?: boolean
   className?: string
+  titleClassName?: string
 }
 
 export function SectionHeading({
   id,
-  eyebrow,
   title,
   subtitle,
-  align = 'center',
-  light = false,
+  align = 'left',
   className = '',
+  titleClassName = '',
 }: SectionHeadingProps) {
-  const alignClass = align === 'center' ? 'text-center mx-auto items-center' : 'text-left items-start'
+  const alignClass = align === 'center' ? 'text-center mx-auto' : ''
 
   return (
-    <div className={`flex max-w-3xl flex-col ${alignClass} ${className}`}>
-      {eyebrow && (
-        <span className={`eyebrow mb-4 ${light ? 'eyebrow-on-dark' : ''}`}>{eyebrow}</span>
-      )}
+    <div className={`max-w-prose ${alignClass} ${className}`}>
       <h2
         id={id}
-        className={`font-display text-display-sm uppercase md:text-display-md ${
-          light ? 'text-white' : 'text-ink'
-        }`}
+        className={`font-display text-display-sm text-ink md:text-display-md ${titleClassName}`}
       >
         {title}
       </h2>
-      <div
-        className={`mt-5 h-1 w-14 rounded-full bg-accent ${align === 'center' ? 'mx-auto' : ''}`}
-        aria-hidden="true"
-      />
       {subtitle && (
-        <p
-          className={`mt-5 max-w-2xl font-body text-base leading-relaxed sm:text-lg ${
-            light ? 'text-on-dark-muted' : 'text-muted'
-          }`}
-        >
-          {subtitle}
-        </p>
+        <p className={`prose-body mt-4 ${align === 'center' ? 'mx-auto' : ''}`}>{subtitle}</p>
       )}
     </div>
   )

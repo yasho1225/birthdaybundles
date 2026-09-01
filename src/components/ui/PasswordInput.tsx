@@ -26,7 +26,7 @@ export function PasswordInput({
           type={visible ? 'text' : 'password'}
           aria-invalid={!!error}
           aria-describedby={error ? `${inputId}-error` : undefined}
-          className={`w-full rounded-xl border bg-white px-4 py-3.5 pr-12 font-body transition-colors focus-ring ${
+          className={`w-full rounded-none border bg-surface px-4 py-3.5 pr-12 font-body transition-colors focus-ring ${
             error ? 'border-primary' : 'border-ink/15 focus:border-secondary'
           } ${className}`}
           {...props}
@@ -34,7 +34,7 @@ export function PasswordInput({
         <button
           type="button"
           onClick={() => setVisible((v) => !v)}
-          className="absolute right-3 top-1/2 -translate-y-1/2 rounded-lg p-1.5 text-subtle transition-colors hover:bg-ink/5 hover:text-ink focus-ring"
+          className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-subtle transition-colors hover:bg-ink/5 hover:text-ink focus-ring"
           aria-label={visible ? 'Hide password' : 'Show password'}
         >
           {visible ? '🙈' : '👁'}

@@ -15,7 +15,7 @@ export function Header() {
   const [searchOpen, setSearchOpen] = useState(false)
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20)
+    const onScroll = () => setScrolled(window.scrollY > 16)
     window.addEventListener('scroll', onScroll, { passive: true })
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
@@ -38,37 +38,31 @@ export function Header() {
       </a>
 
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ${
+        className={`sticky top-0 z-50 transition-all duration-300 ease-out ${
           scrolled
-            ? 'border-b border-ink/5 bg-cream/95 shadow-header backdrop-blur-md dark:border-white/10'
-            : 'bg-cream'
+            ? 'border-b border-ink/6 bg-cream/90 shadow-header backdrop-blur-lg dark:border-white/10'
+            : 'bg-cream/80 backdrop-blur-sm'
         }`}
       >
         <div className="section-container flex items-center justify-between gap-3 py-3 sm:py-4">
           <Logo variant="compact" theme={theme === 'dark' ? 'dark' : 'light'} />
 
-          <nav className="hidden items-center gap-0.5 md:flex" aria-label="Main navigation">
+          <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
             {NAV_ITEMS.map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
                 end={item.path === '/'}
                 className={({ isActive }) =>
-                  `interactive-link relative rounded-lg px-3 py-2 font-body text-sm font-bold focus-ring lg:px-4 ${
-                    isActive ? 'text-primary' : 'text-muted'
+                  `rounded-ui px-3 py-2 font-heading text-sm font-medium transition-colors duration-200 ease-out focus-ring lg:px-4 ${
+                    isActive
+                      ? 'bg-primary/8 text-primary'
+                      : 'text-muted hover:bg-ink/5 hover:text-ink'
                   }`
                 }
               >
                 {({ isActive }) => (
-                  <>
-                    <span aria-current={isActive ? 'page' : undefined}>{item.label}</span>
-                    {isActive && (
-                      <span
-                        className="absolute bottom-0 left-1/2 h-0.5 w-6 -translate-x-1/2 rounded-full bg-primary"
-                        aria-hidden="true"
-                      />
-                    )}
-                  </>
+                  <span aria-current={isActive ? 'page' : undefined}>{item.label}</span>
                 )}
               </NavLink>
             ))}
@@ -78,7 +72,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="hidden items-center gap-2 rounded-xl border border-ink/10 px-3 py-2 font-body text-sm text-muted transition-colors hover:border-secondary/30 hover:text-ink focus-ring sm:flex"
+              className="hidden min-h-11 items-center gap-2 rounded-ui border border-ink/10 px-3 py-2 font-body text-sm text-muted transition-colors duration-200 ease-out hover:border-secondary/30 hover:text-ink focus-ring sm:flex"
               aria-label="Open search"
             >
               <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -91,7 +85,7 @@ export function Header() {
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className="rounded-xl p-2 text-ink transition-colors hover:bg-ink/5 focus-ring sm:hidden"
+              className="flex min-h-11 min-w-11 items-center justify-center rounded-ui p-2 text-ink transition-colors duration-200 ease-out hover:bg-ink/5 focus-ring sm:hidden"
               aria-label="Open search"
             >
               <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -107,7 +101,7 @@ export function Header() {
 
             <button
               type="button"
-              className="rounded-xl p-2 text-ink transition-colors hover:bg-ink/5 focus-ring md:hidden"
+              className="flex min-h-11 min-w-11 items-center justify-center rounded-ui p-2 text-ink transition-colors duration-200 ease-out hover:bg-ink/5 focus-ring md:hidden"
               onClick={() => setMobileOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={mobileOpen}

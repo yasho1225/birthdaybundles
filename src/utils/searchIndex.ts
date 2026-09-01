@@ -36,7 +36,7 @@ export const SEARCH_INDEX: SearchResult[] = [
     category: 'Bundle',
   })),
   ...DONATION_TIERS.map((tier) => ({
-    title: `$${tier.amount} — ${tier.title}`,
+    title: `$${tier.amount} - ${tier.title}`,
     excerpt: tier.description,
     path: '/donate',
     category: 'Donation',

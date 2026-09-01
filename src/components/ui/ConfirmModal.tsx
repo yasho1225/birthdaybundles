@@ -42,15 +42,20 @@ export function ConfirmModal({
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-[80] flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="confirm-modal-title">
+    <div
+      className="fixed inset-0 z-[80] flex items-center justify-center p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="confirm-modal-title"
+    >
       <button
         type="button"
         className="absolute inset-0 bg-black/50 backdrop-blur-sm"
         onClick={onCancel}
         aria-label="Close dialog"
       />
-      <div className="relative w-full max-w-md rounded-3xl border border-ink/10 bg-surface p-6 shadow-card-hover dark:border-white/10">
-        <h2 id="confirm-modal-title" className="font-heading text-lg font-bold text-ink">
+      <div className="surface relative w-full max-w-md p-6 shadow-lift">
+        <h2 id="confirm-modal-title" className="font-display text-xl text-ink">
           {title}
         </h2>
         <div className="mt-3 font-body text-muted">{message}</div>
@@ -59,7 +64,7 @@ export function ConfirmModal({
             ref={cancelRef}
             type="button"
             onClick={onCancel}
-            className="inline-flex items-center justify-center rounded-full px-7 py-3.5 font-heading font-bold text-secondary-fg transition-colors hover:bg-secondary/10 focus-ring"
+            className="inline-flex items-center justify-center rounded-ui px-7 py-3 font-heading font-semibold text-secondary-fg transition-colors duration-200 ease-out hover:bg-secondary/8 focus-ring"
           >
             {cancelLabel}
           </button>

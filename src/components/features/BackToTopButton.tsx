@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { useBackToTopBottomOffset } from '../../hooks/useCookieConsent'
 import { usePrefersReducedMotion } from '../../hooks/usePrefersReducedMotion'
 
 const SCROLL_THRESHOLD = 400
@@ -6,6 +7,7 @@ const SCROLL_THRESHOLD = 400
 export function BackToTopButton() {
   const [visible, setVisible] = useState(false)
   const prefersReducedMotion = usePrefersReducedMotion()
+  const bottomOffset = useBackToTopBottomOffset()
 
   useEffect(() => {
     const onScroll = () => setVisible(window.scrollY > SCROLL_THRESHOLD)
@@ -24,7 +26,7 @@ export function BackToTopButton() {
     <button
       type="button"
       onClick={scrollToTop}
-      className="fixed bottom-24 right-5 z-40 flex h-11 w-11 items-center justify-center rounded-full bg-secondary text-white shadow-card transition-all hover:-translate-y-0.5 hover:shadow-card-hover focus-ring no-print md:bottom-8 md:right-8"
+      className={`fixed left-5 z-40 flex h-11 w-11 items-center justify-center rounded-none bg-secondary text-white transition-[bottom] duration-200 hover:bg-secondary/90 focus-ring no-print md:left-8 ${bottomOffset}`}
       aria-label="Back to top"
     >
       <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">

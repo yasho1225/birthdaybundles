@@ -21,7 +21,7 @@ export function PhotoGallery({ images, className = '' }: PhotoGalleryProps) {
         <div
           key={image.alt + index}
           role="listitem"
-          className={`group overflow-hidden rounded-2xl ${
+          className={`group overflow-hidden rounded-ui shadow-soft ${
             index === 0 ? 'col-span-2 aspect-[2/1] md:col-span-2 md:row-span-2 md:aspect-auto' : 'aspect-square'
           }`}
         >
@@ -29,7 +29,7 @@ export function PhotoGallery({ images, className = '' }: PhotoGalleryProps) {
             src={image.src}
             fallback={image.fallback}
             alt={image.alt}
-            className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="h-full w-full object-cover transition-transform duration-500 ease-out group-hover:scale-[1.02]"
           />
         </div>
       ))}
