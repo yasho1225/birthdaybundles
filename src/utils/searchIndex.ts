@@ -1,9 +1,9 @@
 import {
   ABOUT_VALUES,
   BUNDLE_ITEMS,
-  DONATION_TIERS,
   NAV_ITEMS,
   ORIGIN_STORY,
+  REQUEST_SERVICES,
   SITE,
   TEAM_MEMBERS,
   VOLUNTEER_FAQ,
@@ -19,11 +19,17 @@ export type SearchResult = {
 
 export const SEARCH_INDEX: SearchResult[] = [
   { title: 'Home', excerpt: SITE.tagline, path: '/', category: 'Page' },
+  {
+    title: 'Request a free bundle',
+    excerpt: 'Free birthday, holiday, milestone, and just-because bundles for the Atlanta area.',
+    path: '/request',
+    category: 'Page',
+  },
   { title: 'Donate', excerpt: SITE.trustCopy, path: '/donate', category: 'Page' },
   { title: 'Volunteer & Bake', excerpt: 'Join our community of volunteers and bakers.', path: '/volunteer', category: 'Page' },
   { title: 'Our Story', excerpt: SITE.missionBlurb, path: '/about', category: 'Page' },
   { title: 'Contact', excerpt: 'Get in touch with Birthday Bundles.', path: '/contact', category: 'Page' },
-  ...NAV_ITEMS.map((item) => ({
+  ...NAV_ITEMS.filter((item) => item.path !== '/request').map((item) => ({
     title: item.label,
     excerpt: `Navigate to ${item.label}`,
     path: item.path,
@@ -32,14 +38,14 @@ export const SEARCH_INDEX: SearchResult[] = [
   ...BUNDLE_ITEMS.map((item) => ({
     title: item.label,
     excerpt: item.description,
-    path: '/donate',
+    path: '/request',
     category: 'Bundle',
   })),
-  ...DONATION_TIERS.map((tier) => ({
-    title: `$${tier.amount} - ${tier.title}`,
-    excerpt: tier.description,
-    path: '/donate',
-    category: 'Donation',
+  ...REQUEST_SERVICES.map((service) => ({
+    title: service.title,
+    excerpt: service.description,
+    path: '/request',
+    category: 'Services',
   })),
   ...VOLUNTEER_ROLES.map((role) => ({
     title: role.title,
@@ -67,7 +73,7 @@ export const SEARCH_INDEX: SearchResult[] = [
   })),
   ...TEAM_MEMBERS.map((member) => ({
     title: member.name,
-    excerpt: `${member.role}: ${member.bio}`,
+    excerpt: member.role,
     path: '/about',
     category: 'Team',
   })),

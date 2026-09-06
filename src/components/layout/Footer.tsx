@@ -28,8 +28,8 @@ export function Footer() {
             <p className="mt-5 max-w-sm font-body text-sm leading-relaxed text-on-dark-muted">
               {SITE.missionBlurb}
             </p>
-            <Button as={Link} to="/donate" size="sm" className="mt-6">
-              Donate now
+            <Button as={Link} to="/request" size="sm" className="mt-6">
+              Request a bundle
             </Button>
           </div>
 
@@ -37,6 +37,7 @@ export function Footer() {
             <h2 className="font-heading text-sm font-semibold text-on-dark">Quick links</h2>
             <ul className="mt-5 space-y-3">
               {[
+                { label: 'Request a bundle', to: '/request' },
                 { label: 'Donate', to: '/donate' },
                 { label: 'Volunteer', to: '/volunteer' },
                 { label: 'Our Story', to: '/about' },

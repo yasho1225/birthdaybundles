@@ -6,6 +6,7 @@ import { Home } from './pages/Home'
 import { captureUtmParams } from './utils/utm'
 
 const Donate = lazy(() => import('./pages/Donate').then((m) => ({ default: m.Donate })))
+const Request = lazy(() => import('./pages/Request').then((m) => ({ default: m.Request })))
 const Volunteer = lazy(() =>
   import('./pages/Volunteer').then((m) => ({ default: m.Volunteer })),
 )
@@ -44,6 +45,14 @@ export default function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route index element={<Home />} />
+            <Route
+              path="request"
+              element={
+                <Suspense fallback={<PageLoader />}>
+                  <Request />
+                </Suspense>
+              }
+            />
             <Route
               path="donate"
               element={

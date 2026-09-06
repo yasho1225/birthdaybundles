@@ -10,12 +10,12 @@ web
 
 - **Donors** — individuals who want to fund birthday bundles quickly with trust that money reaches families
 - **Volunteers & bakers** — community members who pack, deliver, or bake for celebrations
-- **Families in need** — referred through partner organizations (not direct site users)
+- **Recipients and caregivers** — people requesting a free individual celebration delivery in the Atlanta area
 - **Community partners** — schools, shelters, organizations who refer families
 
 ## Product Purpose
 
-Birthday Bundles is a nonprofit that delivers complete birthday party kits to children and families who might otherwise go without a celebration. Success means more funded bundles, more volunteers, and dignified joy for every child.
+Birthday Bundles is an official 501(c)(3) student-led nonprofit based in Alpharetta, GA. It brings joy to children living in shelters through free birthday celebrations, baked goods, milestone gifts, and thoughtful deliveries in the Atlanta area. Success means clear access to requesting a bundle, more volunteer support, and dignified joy for every child.
 
 ## Positioning
 
@@ -27,6 +27,7 @@ Warm, direct, dignified. Celebrate without pity. Action-oriented copy. No jargon
 
 ## Constraints
 
-- Preserve existing routes, form flows (Formspree contact, external Google Forms, GoFundMe links)
-- Placeholder URLs in `src/config/links.ts` remain until client provides real endpoints
-- Static SPA — no backend
+- Keep individual requests and volunteer applications in the verified Google Forms; the SPA must not store sensitive form data.
+- Keep donations in the verified GoFundMe campaign.
+- Static SPA — no backend or local storage for requests.
+- Publicly show only “Based in Alpharetta, GA,” never a residential street address.

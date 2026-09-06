@@ -68,6 +68,7 @@ export function Home() {
             <p className="chapter-kicker">What the bundle really holds</p>
             <h2 id="outcome-heading">More than supplies. A memory.</h2>
             <p className="outcome-lead">The cake gets eaten. The balloons come down. The feeling of being celebrated stays.</p>
+            <p className="community-update-label">Community updates</p>
             <EditorialCarousel />
             <Button as={Link} to="/about" variant="outline">Read our story <Icon name="arrow-right" size={17} /></Button>
           </div>
@@ -79,7 +80,7 @@ export function Home() {
           <div className="delivery-heading">
             <p className="chapter-kicker">How joy gets there</p>
             <h2 id="delivery-heading">A clear path from a quiet need to a full celebration.</h2>
-            <p>Every referral is handled privately. Every bundle is prepared thoughtfully. Every delivery protects a family’s dignity.</p>
+            <p>Every request is handled with care. Every bundle is prepared thoughtfully. Every delivery protects a family’s dignity.</p>
           </div>
           <div className="process-rail" aria-hidden="true"><span className="process-rail-fill" /></div>
           <div className="process-accordion">
@@ -98,15 +99,15 @@ export function Home() {
         <div className="section-container-wide">
           <div className="choose-heading">
             <p className="chapter-kicker">Choose your part</p>
-            <h2 id="choose-heading">The next birthday needs a few good people.</h2>
-            <p>Fund the complete bundle or help make one by hand. Both paths end at the same place: a child feeling seen.</p>
+            <h2 id="choose-heading">There’s a place for every kind of care.</h2>
+            <p>Request a free bundle for a child, support the supplies behind a delivery, or bring a little time to the work.</p>
           </div>
           <div className="action-routes">
             <SpotlightCard className="action-route action-sponsor">
               <span className="action-icon"><Icon name="gift" size={34} /></span>
-              <p>A complete birthday bundle costs $75.</p>
-              <h3>Sponsor the whole celebration.</h3>
-              <Magnetic><Button as={Link} to="/donate" size="lg" variant="white">Sponsor a bundle <Icon name="arrow-right" size={18} /></Button></Magnetic>
+              <p>Free birthday, holiday, milestone, and just-because deliveries are available in the Atlanta area.</p>
+              <h3>Start a bundle request.</h3>
+              <Magnetic><Button as={Link} to="/request" size="lg" variant="white">Request a free bundle <Icon name="arrow-right" size={18} /></Button></Magnetic>
             </SpotlightCard>
             <SpotlightCard className="action-route action-volunteer">
               <span className="action-icon"><Icon name="hand-heart" size={34} /></span>
@@ -114,7 +115,7 @@ export function Home() {
               <h3>Bring your time, care, or cake.</h3>
               <div className="action-links">
                 <a href={appendUtmToUrl(LINKS.volunteerForm)} target="_blank" rel="noreferrer">Volunteer with us <Icon name="external" size={16} /></a>
-                <Link to="/volunteer">Explore volunteer roles <Icon name="arrow-right" size={16} /></Link>
+                <Link to="/donate">Support a birthday <Icon name="arrow-right" size={16} /></Link>
               </div>
             </SpotlightCard>
           </div>

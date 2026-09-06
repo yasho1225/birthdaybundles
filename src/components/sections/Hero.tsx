@@ -24,18 +24,18 @@ export function Hero() {
             {SITE.missionBlurb}
           </p>
           <div className="animate-fade-up mt-10 flex flex-col gap-3 sm:flex-row [animation-delay:240ms]">
-            <Button as={Link} to="/donate" size="lg" className="w-full sm:w-auto">
-              Sponsor a bundle
+            <Button as={Link} to="/request" size="lg" className="w-full sm:w-auto">
+              Request a free bundle
             </Button>
-            <Button as={Link} to="/volunteer" variant="outline" size="lg" className="w-full sm:w-auto">
-              Volunteer with us
+            <Button as={Link} to="/donate" variant="outline" size="lg" className="w-full sm:w-auto">
+              Support a birthday
             </Button>
           </div>
           <p className="animate-fade-up mt-8 flex items-center gap-2 font-body text-sm text-muted [animation-delay:320ms]">
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-secondary/10 text-secondary-fg">
               <Icon name="heart" size={16} />
             </span>
-            Over 500 bundles delivered across 12 communities
+            Official 501(c)(3) nonprofit based in Alpharetta, GA
           </p>
         </div>
 
@@ -53,14 +53,9 @@ export function Hero() {
               className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent"
               aria-hidden="true"
             />
-            <figure className="absolute bottom-0 left-0 right-0 p-6 sm:p-8">
-              <blockquote className="font-quote text-lg italic leading-snug text-on-dark sm:text-xl">
-                &ldquo;Her first real birthday party.&rdquo;
-              </blockquote>
-              <figcaption className="mt-2 font-heading text-sm font-medium text-on-dark-muted">
-                A grateful parent
-              </figcaption>
-            </figure>
+            <p className="absolute bottom-0 left-0 right-0 p-6 font-heading text-sm font-medium text-on-dark sm:p-8">
+              Free birthday, holiday, milestone, and just-because deliveries in the Atlanta area.
+            </p>
           </div>
         </div>
       </div>

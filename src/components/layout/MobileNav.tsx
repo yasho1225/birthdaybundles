@@ -57,7 +57,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 md:hidden" role="dialog" aria-modal="true" aria-label="Navigation menu">
+    <div className="fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label="Navigation menu">
       <button
         type="button"
         className="absolute inset-0 bg-ink/50 backdrop-blur-sm"
@@ -74,7 +74,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
             ref={closeButtonRef}
             type="button"
             onClick={onClose}
-            className="rounded-lg p-2 text-ink transition-colors hover:bg-ink/5 focus-ring"
+            className="flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 text-ink transition-colors hover:bg-ink/5 focus-ring"
             aria-label="Close navigation"
           >
             <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -84,7 +84,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
         </div>
 
         <ul className="mt-8 flex flex-col gap-1">
-          {NAV_ITEMS.map((item) => (
+          {NAV_ITEMS.filter((item) => item.path !== '/request').map((item) => (
             <li key={item.path}>
               <NavLink
                 to={item.path}
@@ -102,8 +102,11 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
           ))}
         </ul>
 
-        <div className="mt-auto space-y-3 pt-6">
-          <Button as={NavLink} to="/donate" onClick={onClose} className="w-full">
+        <div className="mt-auto grid gap-3 pt-6">
+          <Button as={NavLink} to="/request" onClick={onClose} className="w-full">
+            Request a Bundle
+          </Button>
+          <Button as={NavLink} to="/donate" onClick={onClose} variant="outline" className="w-full">
             Donate
           </Button>
         </div>

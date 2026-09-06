@@ -47,8 +47,8 @@ export function Header() {
         <div className="section-container-wide flex items-center justify-between gap-3 py-3 sm:py-4">
           <Logo variant="compact" theme={theme === 'dark' ? 'dark' : 'light'} />
 
-          <nav className="birthday-nav-links hidden items-center gap-1 md:flex" aria-label="Main navigation">
-            {NAV_ITEMS.map((item) => (
+          <nav className="birthday-nav-links hidden items-center gap-1 lg:flex" aria-label="Main navigation">
+            {NAV_ITEMS.filter((item) => item.path !== '/request').map((item) => (
               <NavLink
                 key={item.path}
                 to={item.path}
@@ -95,13 +95,13 @@ export function Header() {
 
             <ThemeToggle />
 
-            <Button as={NavLink} to="/donate" size="sm" className="hidden sm:inline-flex">
-              Donate
+            <Button as={NavLink} to="/request" size="sm" className="!hidden lg:!inline-flex">
+              Request a Bundle
             </Button>
 
             <button
               type="button"
-              className="flex min-h-11 min-w-11 items-center justify-center rounded-ui p-2 text-ink transition-colors duration-200 ease-out hover:bg-ink/5 focus-ring md:hidden"
+              className="flex min-h-11 min-w-11 items-center justify-center rounded-ui p-2 text-ink transition-colors duration-200 ease-out hover:bg-ink/5 focus-ring lg:hidden"
               onClick={() => setMobileOpen(true)}
               aria-label="Open navigation menu"
               aria-expanded={mobileOpen}

@@ -12,8 +12,8 @@ export function Testimonials() {
         <ScrollReveal>
           <SectionHeading
             id="testimonials-heading"
-            title="Stories from our community"
-            subtitle="Families, volunteers, and partners who make every celebration possible."
+            title="Community updates"
+            subtitle="Official moments and milestones shared by Birthday Bundles."
             className="max-w-2xl"
           />
         </ScrollReveal>

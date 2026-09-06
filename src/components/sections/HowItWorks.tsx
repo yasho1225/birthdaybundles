@@ -11,7 +11,7 @@ export function HowItWorks() {
           <SectionHeading
             id="how-heading"
             title="How Birthday Bundles works"
-            subtitle="From referral to celebration. A simple path to joy, delivered with dignity."
+            subtitle="From request to celebration. A simple path to joy, delivered with dignity."
             className="max-w-2xl"
           />
         </ScrollReveal>

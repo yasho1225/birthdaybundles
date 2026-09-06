@@ -14,9 +14,8 @@ export const IMAGES = {
     '/images/photos/testimonial-3.jpg',
   ],
   team: [
-    '/images/photos/team-1.jpg',
-    '/images/photos/team-2.jpg',
-    '/images/photos/team-3.jpg',
+    '/images/photos/reyha.jpg',
+    '/images/photos/saira.jpg',
   ],
   gallery: Array.from({ length: 6 }, (_, i) => `/images/photos/gallery-${i + 1}.jpg`),
 } as const
@@ -36,7 +35,6 @@ export const PLACEHOLDER_IMAGES = {
   team: [
     '/images/placeholders/team-1.svg',
     '/images/placeholders/team-2.svg',
-    '/images/placeholders/team-3.svg',
   ],
   gallery: [
     '/images/placeholders/gallery-1.svg',

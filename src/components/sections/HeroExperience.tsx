@@ -53,8 +53,8 @@ export function HeroExperience() {
           </h1>
           <p className="hero-detail">{SITE.missionBlurb}</p>
           <div className="hero-actions">
-            <Magnetic><Button as={Link} to="/donate" size="lg">Sponsor a birthday <Icon name="arrow-right" size={18} /></Button></Magnetic>
-            <Button as="a" href="#bundle-assembly" variant="white" size="lg">See what’s inside</Button>
+            <Magnetic><Button as={Link} to="/request" size="lg">Request a free bundle <Icon name="arrow-right" size={18} /></Button></Magnetic>
+            <Button as={Link} to="/donate" variant="white" size="lg">Support a birthday</Button>
           </div>
           <p className="hero-trust"><span aria-hidden="true">✓</span>{SITE.trustCopy}</p>
         </div>

@@ -3,207 +3,208 @@ import { IMAGES, PLACEHOLDER_IMAGES, imagePair } from './images'
 
 export const SITE = {
   name: 'Birthday Bundles',
-  tagline: 'Every kid deserves a birthday to remember',
+  tagline: 'Every child deserves to be celebrated.',
   mission:
-    'We deliver complete birthday bundles: cake, decorations, gifts, and party supplies for children and families who might otherwise go without a celebration.',
+    'Birthday Bundles brings joy to children living in shelters through birthday celebrations, baked goods, and milestone gifts.',
   missionBlurb:
-    'Birthday Bundles is a community-powered nonprofit bringing joy, dignity, and celebration to children who deserve to feel special on their birthday.',
-  trustCopy: '100% of donations fund birthday bundles for families in need.',
+    'Birthday Bundles is an official 501(c)(3) student-led nonprofit based in Alpharetta, GA.',
+  trustCopy:
+    'Free birthday, holiday, milestone, and just-because deliveries for children in the Atlanta area.',
 } as const
 
 export const NAV_ITEMS = [
   { label: 'Home', path: '/' },
+  { label: 'Request a bundle', path: '/request' },
   { label: 'Our Story', path: '/about' },
   { label: 'Donate', path: '/donate' },
   { label: 'Volunteer', path: '/volunteer' },
   { label: 'Contact', path: '/contact' },
 ] as const
 
+/** Facts verified on Birthday Bundles' original public site. */
 export const IMPACT_STATS = [
-  { value: '500+', label: 'Bundles Delivered' },
-  { value: '200+', label: 'Families Served' },
-  { value: '50+', label: 'Volunteer Bakers' },
-  { value: '12', label: 'Communities' },
+  { value: '501(c)(3)', label: 'Official nonprofit' },
+  { value: '4', label: 'Free service types' },
+  { value: 'Atlanta', label: 'Area delivery' },
+  { value: 'Funds', label: 'Bundle + baking supplies' },
 ] as const
 
 export const HOW_IT_WORKS = [
   {
     icon: 'users' as IconName,
-    title: 'Families are referred',
+    title: 'Share the celebration',
     description:
-      'Schools, shelters, and community partners connect us with children who deserve a celebration.',
+      'Use the request form to tell us about the child, the moment, and the details that will make it feel personal.',
   },
   {
     icon: 'package' as IconName,
-    title: 'We assemble each bundle',
+    title: 'We prepare the bundle',
     description:
-      'Volunteers pack cake, decorations, a gift, and party supplies tailored to each child.',
+      'Birthday Bundles coordinates a celebration around the requested birthday, milestone, holiday, or just-because delivery.',
   },
   {
     icon: 'truck' as IconName,
-    title: 'Joy is delivered',
+    title: 'Delivery is coordinated',
     description:
-      'Bundles arrive with dignity and care, so every child can celebrate their milestone.',
+      'Individual deliveries are available in the Atlanta area; shelter and larger requests are coordinated directly.',
   },
 ] as const
 
 export const BUNDLE_ITEMS = [
-  { icon: 'cake' as IconName, label: 'Birthday cake', description: 'Homemade or store-bought, always made with love' },
-  { icon: 'balloon' as IconName, label: 'Decorations', description: 'Balloons, banners, and festive party décor' },
-  { icon: 'gift' as IconName, label: 'Small gift', description: 'Age-appropriate present chosen for each child' },
-  { icon: 'party' as IconName, label: 'Party supplies', description: 'Plates, cups, napkins, and everything to celebrate' },
+  { icon: 'cake' as IconName, label: 'Birthday cake', description: 'A celebration cake or baked good.' },
+  { icon: 'balloon' as IconName, label: 'Decorations', description: 'Details that make the moment feel festive.' },
+  { icon: 'gift' as IconName, label: 'Small gift', description: 'A thoughtful piece for a birthday or milestone.' },
+  { icon: 'party' as IconName, label: 'Party supplies', description: 'Celebration essentials for sharing the day.' },
 ] as const
 
-export const DONATION_TIERS = [
-  {
-    amount: 25,
-    title: 'Supplies & Decorations',
-    description: 'Covers balloons, banners, plates, and party essentials for one celebration.',
-    highlighted: false,
-  },
-  {
-    amount: 50,
-    title: 'Half Bundle',
-    description: 'Funds half of a complete birthday bundle for one child.',
-    highlighted: false,
-  },
-  {
-    amount: 75,
-    title: 'Full Birthday Bundle',
-    description: 'Sponsors one complete birthday celebration with cake, gift, décor, and supplies.',
-    highlighted: true,
-    badge: 'Most Popular',
-  },
-  {
-    amount: 150,
-    title: 'Sponsor Two Bundles',
-    description: 'Give two children the birthday they deserve.',
-    highlighted: false,
-  },
-] as const
-
+/**
+ * Public updates from the original Birthday Bundles site. These replace
+ * unverified individual testimonials with attributable organization news.
+ */
 export const TESTIMONIALS = [
   {
     quote:
-      'My daughter had never had a real birthday party before. When the bundle arrived, her face lit up in a way I will never forget.',
-    name: 'Maria R.',
-    role: 'Parent',
+      'Birthday Bundles delivered celebration supplies to Covenant House Georgia, helping make a special day possible for the young people they serve.',
+    name: 'Covenant House Georgia delivery',
+    role: 'Community update',
     ...imagePair(IMAGES.testimonials[0], PLACEHOLDER_IMAGES.testimonials[0]),
   },
   {
     quote:
-      'Volunteering with Birthday Bundles has been the most rewarding thing I have done this year. Seeing kids smile makes every hour worth it.',
-    name: 'James T.',
-    role: 'Volunteer',
+      'Birthday Bundles is officially recognized as a 501(c)(3), so donations are tax deductible.',
+    name: 'Official nonprofit milestone',
+    role: 'Community update',
     ...imagePair(IMAGES.testimonials[1], PLACEHOLDER_IMAGES.testimonials[1]),
   },
   {
     quote:
-      'We partner with Birthday Bundles because they bring dignity and joy to families during hard times. Every bundle is delivered with care.',
-    name: 'Sarah K.',
-    role: 'Community Partner',
+      'An in-kind KitchenAid donation helps Birthday Bundles prepare more baked goods for celebrations.',
+    name: 'A gift to the kitchen',
+    role: 'Community update',
     ...imagePair(IMAGES.testimonials[2], PLACEHOLDER_IMAGES.testimonials[2]),
   },
 ] as const
 
 export const VOLUNTEER_ROLES = [
   {
-    title: 'Volunteers',
+    title: 'Volunteer support',
     description:
-      'Help pack bundles, deliver celebrations to families, and support community events. No experience needed. Just a big heart.',
-    cta: 'Sign Up to Volunteer',
+      'Help assemble celebration boxes, coordinate deliveries, and support Birthday Bundles in the community.',
+    cta: 'Volunteer with us',
     linkKey: 'volunteerForm' as const,
   },
   {
-    title: 'Bakers',
+    title: 'Volunteer bakers',
     description:
-      'Bake homemade cakes or coordinate store-bought cakes for upcoming birthdays. Flexible schedule. Bake as often as you like.',
-    cta: 'Sign Up to Bake',
-    linkKey: 'bakerOrderForm' as const,
+      'Bake birthday cakes, cupcakes, or treats for an upcoming celebration. Kitchen access is required.',
+    cta: 'Volunteer as a baker',
+    linkKey: 'volunteerForm' as const,
   },
 ] as const
 
 export const VOLUNTEER_FAQ = [
   {
-    question: 'How much time do I need to commit?',
+    question: 'Who can volunteer?',
     answer:
-      'As little or as much as you like. Most volunteers contribute 2–4 hours per month. Bakers can sign up for individual birthdays that fit their schedule.',
+      'Birthday Bundles welcomes volunteers ages 14 and up. The volunteer form is the best place to share how you would like to help.',
   },
   {
-    question: 'Do I need food safety certification to bake?',
+    question: 'Do volunteer bakers need kitchen access?',
     answer:
-      'Home bakers should follow standard food safety practices. We provide guidelines and can connect you with certified kitchen partners if preferred. Store-bought cakes are always welcome too.',
+      'Yes. The Volunteer Baker Form asks bakers to confirm that they have access to a kitchen.',
   },
   {
-    question: 'Is there a minimum age to volunteer?',
+    question: 'What can I help with?',
     answer:
-      'Volunteers 16 and older can participate independently. Younger volunteers are welcome with a parent or guardian at packing and delivery events.',
+      'Opportunities include baking birthday cakes, cupcakes, and treats; assembling boxes; and helping with deliveries.',
   },
   {
-    question: 'How are families selected to receive bundles?',
+    question: 'How do I share my availability?',
     answer:
-      'We work with schools, shelters, and community organizations to identify families in need. All referrals are handled with dignity and confidentiality.',
+      'The form asks about your neighborhood and how many deliveries or celebrations you can support each month.',
   },
 ] as const
 
+export const REQUEST_SERVICES = [
+  {
+    title: 'Birthday Bundles',
+    description: 'Personalized birthday celebration boxes for children in shelters.',
+  },
+  {
+    title: 'Special Occasion Deliveries',
+    description: 'Support for meaningful milestones, from school achievements to a first job.',
+  },
+  {
+    title: 'Holiday Bundles',
+    description: 'Celebration bundles for holiday moments and special occasions.',
+  },
+  {
+    title: 'Just Because Deliveries',
+    description: 'Thoughtful deliveries for a child who deserves an unexpected moment of joy.',
+  },
+] as const
+
+export const REQUEST_GUIDANCE = {
+  availability: 'All Birthday Bundles services are free and available in the Atlanta area.',
+  timing: 'Please submit individual requests at least one week before the requested delivery date.',
+  bulk: 'For orders for more than three recipients and shelter bulk orders, email info@birthdaybundles.org.',
+  signIn: 'Google sign-in is required to submit the secure request form.',
+} as const
+
 export const ABOUT_VALUES = [
-  { title: 'Dignity', description: 'Every child deserves to feel celebrated, not singled out.', icon: 'heart' as IconName },
-  { title: 'Community', description: 'Neighbors helping neighbors, one birthday at a time.', icon: 'community' as IconName },
-  { title: 'Joy', description: 'Birthdays are milestones. We make sure no child misses theirs.', icon: 'sparkle' as IconName },
+  { title: 'Dignity', description: 'Every child deserves to feel celebrated.', icon: 'heart' as IconName },
+  { title: 'Community', description: 'Volunteers, donors, and partners make every delivery possible.', icon: 'community' as IconName },
+  { title: 'Joy', description: 'A birthday or milestone can become a moment of belonging.', icon: 'sparkle' as IconName },
 ] as const
 
 export const TEAM_MEMBERS = [
   {
-    name: 'Alex Morgan',
-    role: 'Co-Founder',
-    bio: 'Started Birthday Bundles after seeing too many kids go without a celebration. Leads outreach and community partnerships.',
+    name: 'Reyha Raghavaraju',
+    role: 'Founder & Executive Director',
+    bio: '',
     ...imagePair(IMAGES.team[0], PLACEHOLDER_IMAGES.team[0]),
   },
   {
-    name: 'Jordan Lee',
-    role: 'Co-Founder',
-    bio: 'Manages operations, volunteer coordination, and bundle logistics. Believes every birthday should feel magical.',
+    name: 'Saira Sharma',
+    role: 'Content Manager',
+    bio: '',
     ...imagePair(IMAGES.team[1], PLACEHOLDER_IMAGES.team[1]),
-  },
-  {
-    name: 'Casey Rivera',
-    role: 'Volunteer Director',
-    bio: 'Recruits and supports our amazing network of bakers and delivery volunteers across 12 communities.',
-    ...imagePair(IMAGES.team[2], PLACEHOLDER_IMAGES.team[2]),
   },
 ] as const
 
 export const GALLERY_IMAGES = IMAGES.gallery.map((src, i) => ({
   ...imagePair(src, PLACEHOLDER_IMAGES.gallery[i]),
-  alt: `Birthday celebration photo ${i + 1}`,
+  alt: `Birthday Bundles community photo ${i + 1}`,
 }))
 
 export const CONTACT_INFO = {
-  email: 'hello@birthdaybundles.org',
-  // TODO: real URL needed — replace with actual phone when available
-  phone: '(555) 123-4567',
-  // TODO: real URL needed — replace with actual address when available
-  address: '123 Community Lane, Your City, ST 00000',
+  email: 'info@birthdaybundles.org',
+  volunteerEmail: 'volunteer@birthdaybundles.org',
+  sponsorEmail: 'birthdaybundlesalpharetta@gmail.com',
+  phone: '470-840-5456',
+  location: 'Based in Alpharetta, GA',
+  address: 'Based in Alpharetta, GA',
+  charityId: '41-4325837',
 } as const
 
 export const ORIGIN_STORY = [
   {
-    title: 'It started with one birthday',
-    body: 'In 2020, a group of neighbors noticed that several children in their community had never had a real birthday party. They pooled resources for one cake, a few balloons, and a small gift. That single celebration sparked something bigger.',
+    title: 'Celebrations are care',
+    body: 'Birthday Bundles brings joy to children living in shelters through birthday celebrations, baked goods, and milestone gifts.',
   },
   {
-    title: 'Growing through community',
-    body: 'Word spread. Bakers volunteered. Families referred other families. Schools and shelters reached out. What began as a grassroots effort became Birthday Bundles, a nonprofit dedicated to making sure no child goes without a birthday.',
+    title: 'More than one kind of moment',
+    body: 'The organization offers free Birthday Bundles, Special Occasion Deliveries, Holiday Bundles, and Just Because Deliveries.',
   },
   {
-    title: 'Where we are today',
-    body: 'Today we have delivered over 500 bundles across 12 communities, powered by 50+ volunteer bakers and dozens of delivery volunteers. Every bundle is assembled with care and delivered with dignity.',
+    title: 'Local and community-powered',
+    body: 'Birthday Bundles is an official 501(c)(3) student-led nonprofit based in Alpharetta, GA, serving the Atlanta area.',
   },
 ] as const
 
 export const STORY_QUOTE = {
-  text: 'A birthday is not a luxury. It is a milestone every child deserves to celebrate.',
-  attribution: 'The Birthday Bundles founders',
+  text: 'Every child deserves to be celebrated.',
+  attribution: 'Birthday Bundles',
 } as const
 
 export const HERO_IMAGE = imagePair(IMAGES.hero, PLACEHOLDER_IMAGES.hero)

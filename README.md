@@ -2,7 +2,7 @@
 
 **Every kid deserves a birthday to remember.**
 
-A production-ready website for [Birthday Bundles](https://github.com/yasho1225/birthdaybundles) — a community nonprofit that delivers complete birthday party kits (cake, decorations, gifts, and supplies) to children and families who might otherwise go without a celebration.
+A production-ready website for [Birthday Bundles](https://github.com/yasho1225/birthdaybundles) — an official 501(c)(3), student-led nonprofit based in Alpharetta, GA. Birthday Bundles brings joy to children living in shelters through free birthday celebrations, baked goods, milestone gifts, and thoughtful deliveries across the Atlanta area.
 
 Built with React, Vite, TypeScript, Tailwind CSS, Lenis, and GSAP. Designed as a tactile, scroll-directed story with easy content updates — no CMS required.
 
@@ -23,17 +23,18 @@ Open [http://localhost:5173](http://localhost:5173).
 
 | Route | Description |
 |-------|-------------|
-| `/` | Home — hero, impact stats, mission, testimonials, CTAs |
-| `/donate` | Donation tiers, bundle breakdown, GoFundMe integration |
-| `/volunteer` | Volunteer & baker roles, FAQ |
+| `/` | Home — story-led hero, verified organization facts, community updates, CTAs |
+| `/request` | Free bundle request guidance, verified services, secure Google Form embed |
+| `/donate` | Live GoFundMe campaign with an always-visible external fallback |
+| `/volunteer` | Volunteer and baker roles, requirements, secure Google Form embed |
 | `/about` | Origin story, team, photo gallery |
-| `/contact` | Contact form, email, phone, address |
+| `/contact` | Direct paths for shelters, volunteers, sponsors, and general questions |
 
 ---
 
 ## Features
 
-- **Centralized config** — swap links, copy, stats, and images without touching components
+- **Centralized config** — verified destinations, copy, services, and images live in one place
 - **Dark mode** — theme toggle with system preference support
 - **Accessible** — skip links, focus rings, ARIA labels, reduced-motion support
 - **Responsive** — mobile nav, sticky header, touch-friendly UI
@@ -42,7 +43,7 @@ Open [http://localhost:5173](http://localhost:5173).
 - **React Bits adaptations** — magnetic actions, spotlight cards, and animated impact counters reskinned for the brand
 - **Print stylesheet** — clean output for flyers and handouts
 - **Cookie notice** — essential-only local storage disclosure
-- **UTM tracking** — campaign params appended to external donate links
+- **External systems stay external** — Google Forms holds request/volunteer data and GoFundMe processes gifts
 - **Image fallbacks** — real photos auto-used when present; SVG placeholders until then
 
 ---
@@ -93,20 +94,20 @@ Most launch-day changes live in two files:
 All external URLs in one place:
 
 - GoFundMe campaign
+- Birthday Bundle request form and its embed URL
+- Volunteer Baker form and its embed URL
 - Instagram profile
-- Volunteer & baker Google Forms
-- Formspree contact endpoint
-- Contact email (`mailto:`)
+- General, volunteer, sponsor, and phone contact paths
 
 ### `src/config/content.ts`
 
 All site copy:
 
 - Tagline, mission, trust statements
-- Impact statistics
-- Donation tiers & bundle checklist
-- Testimonials, team bios, FAQ
-- Contact info (email, phone, address)
+- Verified organization facts and free service types
+- Request guidance (Atlanta area, one-week lead time, bulk-order contact)
+- Community updates, team roles, and volunteer FAQ
+- Contact info (email, phone, public city, Charity ID)
 
 ### Images
 
@@ -114,15 +115,15 @@ All site copy:
 2. Copy them to `public/images/photos/`
 3. Paths are configured in `src/config/images.ts` — the site falls back to SVG placeholders until real photos are added
 
-### GoFundMe embed
+### Request, volunteer, and donation flows
 
-Replace the placeholder widget section in `src/pages/Donate.tsx` with your campaign embed code from the GoFundMe dashboard.
+The public site intentionally does not collect sensitive details itself:
 
-### Contact form
+- `/request` embeds the verified Birthday Bundles Information Form and provides an external fallback. It communicates the Google sign-in requirement before the form.
+- `/volunteer` embeds the verified Volunteer Baker Form with an external fallback.
+- `/donate` embeds the live GoFundMe campaign with an external fallback.
 
-1. Create a free account at [Formspree](https://formspree.io)
-2. Set the `contactForm` URL in `src/config/links.ts`
-3. The form in `src/pages/Contact.tsx` posts directly to that endpoint
+Google Forms and GoFundMe remain the systems of record. Do not add a client-side database or form endpoint without the organization’s direction.
 
 ---
 
@@ -189,7 +190,7 @@ src/
 │   ├── sections/        # Home page sections (Hero, Stats, CTA, …)
 │   ├── features/        # Dark mode, search, cookie banner, FAB, …
 │   └── ui/              # Button, Logo, SectionHeading, PageHeader, …
-├── pages/               # Home, Donate, Volunteer, About, Contact
+├── pages/               # Home, Request, Donate, Volunteer, About, Contact
 ├── context/             # ThemeContext
 ├── hooks/               # useScrollReveal, useScrollProgress, …
 ├── utils/               # searchIndex, utm
