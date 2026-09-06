@@ -8,12 +8,12 @@ Persuade — earn trust and drive donate / volunteer action.
 
 ## Visual world
 
-**Warm Narrative Celebration** — editorial nonprofit storytelling with photography, human typography, and restrained brand color. Feels like a premium community organization, not a SaaS template.
+**A birthday built by hand** — a tactile editorial system where paper, ribbon, labels, photography, and motion show a bundle becoming a celebration. The experience stays adult, trustworthy, and conversion-focused while carrying the warmth of childhood birthdays.
 
 ## Typography
 
 - **Display / headings:** Fraunces (optical, warm serif)
-- **Body / UI:** Instrument Sans (humanist, readable)
+- **Body / UI:** Outfit (friendly geometric humanist)
 - **Quotes:** Fraunces italic
 - No uppercase display shouting. Sentence case headings.
 
@@ -29,7 +29,7 @@ Keep brand palette, use with intention:
 | Cream `#FEF2E4` | Page canvas |
 | Ink `#1A1A1A` | Text |
 
-Cream-dominant canvas. Color as accent strokes, not full-width metric bands.
+Color moves in deliberate chapters: cream for reflection, teal for community and trust, yellow for assembly and participation, and deep ink for the final evening-celebration CTA.
 
 ## Layout
 
@@ -38,16 +38,20 @@ Cream-dominant canvas. Color as accent strokes, not full-width metric bands.
 - No eyebrow/kicker labels above headings
 - No four-stat hero metric grids
 - SVG icon system — no emoji
+- Physical details use restrained paper, tape, tag, ribbon, and box motifs
 
 ## Motion
 
-- Scroll reveals with stagger (existing ScrollReveal)
-- Hero image subtle scale on load
-- 200–400ms ease-out transitions
-- Respect `prefers-reduced-motion`
+- Lenis and the GSAP ticker share one synchronized frame loop
+- The hero uses masked typography, image depth, and restrained celebratory settling
+- The bundle assembly pins on desktop while real content is added to a tactile box
+- One vertical-driven horizontal journey explains referral, assembly, and delivery
+- Memory photos use layered parallax; tactile controls use small magnetic and spotlight responses
+- Mobile recomposes pinned/horizontal scenes into readable vertical stories
+- `prefers-reduced-motion` disables Lenis, pins, parallax, and hidden initial states
 
 ## Components
 
-- Buttons: rounded-lg, clear hierarchy (primary / secondary / ghost)
+- Buttons: tactile, high-contrast, small magnetic range on selected primary actions
 - Forms: labeled inputs, inline errors, loading states
-- Cards: soft surface, subtle border, no nested cards
+- Cards: reserved for physical metaphors such as tags, notes, and photographs; no nested cards

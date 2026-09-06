@@ -100,7 +100,7 @@ export function Contact() {
         subtitle="Have a question, partnership idea, or want to get involved? We'd love to hear from you."
       />
 
-      <section aria-labelledby="contact-form-heading" className="section-padding">
+      <section aria-labelledby="contact-form-heading" className="contact-canvas section-padding">
         <div className="section-container-wide">
           <div className="grid gap-8 lg:grid-cols-12">
             <ScrollReveal className="surface p-8 lg:col-span-8 lg:p-10">

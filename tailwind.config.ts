@@ -22,8 +22,8 @@ export default {
       },
       fontFamily: {
         display: ['Fraunces', 'Georgia', 'serif'],
-        heading: ['"Instrument Sans"', 'system-ui', 'sans-serif'],
-        body: ['"Instrument Sans"', 'system-ui', 'sans-serif'],
+        heading: ['Outfit', 'system-ui', 'sans-serif'],
+        body: ['Outfit', 'system-ui', 'sans-serif'],
         quote: ['Fraunces', 'Georgia', 'serif'],
       },
       fontSize: {

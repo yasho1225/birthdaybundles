@@ -1,133 +1,48 @@
+import { useRef } from 'react'
+import { BUNDLE_ITEMS, DONATION_TIERS, SITE } from '../config/content'
 import { LINKS } from '../config/links'
 import { appendUtmToUrl } from '../utils/utm'
-import { BUNDLE_ITEMS, DONATION_TIERS, SITE } from '../config/content'
-import { Button } from '../components/ui/Button'
-import { DonationTier } from '../components/ui/DonationTier'
-import { Icon } from '../components/ui/Icon'
+import { useGSAP, gsap } from '../motion/gsap'
 import { PageHeader } from '../components/ui/PageHeader'
-import { ScrollReveal } from '../components/ui/ScrollReveal'
-import { SectionHeading } from '../components/ui/SectionHeading'
+import { Button } from '../components/ui/Button'
+import { Icon } from '../components/ui/Icon'
+import { SpotlightCard } from '../components/bits/SpotlightCard'
 
 export function Donate() {
-  const handleDonate = (amount: number) => {
-    const url = appendUtmToUrl(`${LINKS.gofundme}?amount=${amount}`)
-    window.open(url, '_blank', 'noopener,noreferrer')
-  }
+  const root = useRef<HTMLDivElement>(null)
+  const handleDonate = (amount: number) => window.open(appendUtmToUrl(`${LINKS.gofundme}?amount=${amount}`), '_blank', 'noopener,noreferrer')
 
-  const featuredTier = DONATION_TIERS.find((t) => t.highlighted)!
-  const otherTiers = DONATION_TIERS.filter((t) => !t.highlighted)
+  useGSAP(() => {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
+    gsap.from('.donation-tier-new', { y: 70, opacity: 0, rotate: (i: number) => i % 2 ? 1.5 : -1.5, stagger: .09, duration: .8, ease: 'power3.out', scrollTrigger: { trigger: '.donation-grid-new', start: 'top 78%' } })
+    gsap.to('.donation-path-line', { scaleX: 1, ease: 'none', scrollTrigger: { trigger: '.donation-path', start: 'top 75%', end: 'bottom 55%', scrub: .6 } })
+  }, { scope: root })
 
-  return (
-    <>
-      <PageHeader title="Sponsor a bundle" subtitle={SITE.trustCopy} />
-
-      <section aria-labelledby="bundle-heading" className="section-padding bg-surface">
-        <div className="section-container-wide">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <ScrollReveal>
-              <SectionHeading
-                id="bundle-heading"
-                title="What's in a bundle?"
-                subtitle="Every birthday bundle includes everything a family needs to celebrate with dignity and joy."
-              />
-            </ScrollReveal>
-
-            <ScrollReveal delay={80}>
-              <ul className="grid gap-4 sm:grid-cols-2">
-                {BUNDLE_ITEMS.map((item) => (
-                  <li key={item.label} className="surface flex gap-4 p-5">
-                    <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-ui bg-primary/10 text-primary">
-                      <Icon name={item.icon} size={22} />
-                    </span>
-                    <div>
-                      <h3 className="font-heading text-sm font-semibold text-ink">{item.label}</h3>
-                      <p className="mt-1 font-body text-sm text-muted">{item.description}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </ScrollReveal>
-          </div>
+  return <div ref={root} className="donate-page">
+    <PageHeader title="Turn a gift into a birthday" subtitle="Choose the part you want to make possible. Every dollar funds birthday bundles for families in need." />
+    <section className="donation-meaning" aria-labelledby="donation-meaning-heading">
+      <div className="section-container-wide">
+        <p className="donation-trust">{SITE.trustCopy}</p>
+        <h2 id="donation-meaning-heading">What your gift puts inside the box.</h2>
+        <div className="donation-grid-new">
+          {DONATION_TIERS.map((tier) => <button type="button" onClick={() => handleDonate(tier.amount)} key={tier.amount} className={`donation-tier-new ${tier.highlighted ? 'is-featured' : ''}`}>
+            <span className="donation-amount">${tier.amount}</span><span className="donation-tier-title">{tier.title}</span><span className="donation-tier-copy">{tier.description}</span><span className="donation-tier-action">Choose this gift <Icon name="arrow-right" size={18} /></span>
+          </button>)}
         </div>
-      </section>
-
-      <section aria-labelledby="tiers-heading" className="section-padding">
-        <div className="section-container-wide">
-          <ScrollReveal>
-            <SectionHeading
-              id="tiers-heading"
-              title="Choose your impact"
-              subtitle="Every dollar goes directly toward birthday celebrations for children in need."
-            />
-          </ScrollReveal>
-
-          <ScrollReveal delay={80}>
-            <div className="mt-12 space-y-4">
-              <DonationTier
-                amount={featuredTier.amount}
-                title={featuredTier.title}
-                description={featuredTier.description}
-                highlighted
-                badge={'badge' in featuredTier ? featuredTier.badge : undefined}
-                onSelect={() => handleDonate(featuredTier.amount)}
-              />
-              <div className="grid gap-4 md:grid-cols-3">
-                {otherTiers.map((tier) => (
-                  <DonationTier
-                    key={tier.amount}
-                    amount={tier.amount}
-                    title={tier.title}
-                    description={tier.description}
-                    onSelect={() => handleDonate(tier.amount)}
-                  />
-                ))}
-              </div>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal>
-            <div className="mt-12 flex flex-col items-start gap-4 rounded-ui border border-ink/8 bg-surface p-6 sm:flex-row sm:items-center sm:justify-between sm:p-8">
-              <p className="font-body text-muted">Prefer to donate through GoFundMe?</p>
-              <Button
-                as="a"
-                href={appendUtmToUrl(LINKS.gofundme)}
-                target="_blank"
-                rel="noopener noreferrer"
-                size="lg"
-              >
-                Donate on GoFundMe
-                <Icon name="external" size={16} />
-              </Button>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <section aria-labelledby="embed-heading" className="section-padding bg-surface">
-        <div className="section-container-wide">
-          <ScrollReveal>
-            <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-              <div>
-                <h2 id="embed-heading" className="font-display text-display-sm text-ink">
-                  Donate directly
-                </h2>
-                <p className="prose-body mt-4">
-                  Use the GoFundMe widget below, or click the button above to give through our
-                  campaign page.
-                </p>
-              </div>
-              <div className="flex min-h-[280px] items-center justify-center rounded-ui border-2 border-dashed border-ink/12 bg-cream p-8">
-                <div className="text-center">
-                  <p className="font-heading font-semibold text-subtle">GoFundMe embed placeholder</p>
-                  <p className="mt-2 font-body text-sm text-muted">
-                    Replace with your campaign widget. See README.
-                  </p>
-                </div>
-              </div>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-    </>
-  )
+      </div>
+    </section>
+    <section className="donation-path" aria-labelledby="donation-path-heading">
+      <div className="section-container-wide">
+        <h2 id="donation-path-heading">From your hands to their celebration.</h2>
+        <div className="donation-path-line" aria-hidden="true" />
+        <ol>{BUNDLE_ITEMS.map((item, index) => <li key={item.label}><span>{String(index + 1).padStart(2,'0')}</span><Icon name={item.icon} size={30}/><h3>{item.label}</h3><p>{item.description}</p></li>)}</ol>
+      </div>
+    </section>
+    <section className="donation-direct" aria-labelledby="donation-direct-heading">
+      <div className="section-container-wide donation-direct-grid">
+        <div><p>A secure next step</p><h2 id="donation-direct-heading">Ready when you are.</h2><p>Your donation continues on GoFundMe. The campaign link is centralized and preserves campaign tracking.</p><Button as="a" href={appendUtmToUrl(LINKS.gofundme)} target="_blank" rel="noopener noreferrer" size="lg" variant="white">Donate on GoFundMe <Icon name="external" size={17}/></Button></div>
+        <SpotlightCard className="donation-widget"><Icon name="gift" size={48}/><h3>Campaign widget</h3><p>The live GoFundMe embed will appear here once the organization supplies its campaign code.</p></SpotlightCard>
+      </div>
+    </section>
+  </div>
 }

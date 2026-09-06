@@ -18,7 +18,7 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="relative overflow-hidden bg-inverse text-on-dark no-print">
+    <footer className="birthday-footer relative overflow-hidden bg-inverse text-on-dark no-print">
       <div className="absolute inset-0 bg-warm-glow opacity-30" aria-hidden="true" />
 
       <div className="section-container relative py-16 md:py-20">

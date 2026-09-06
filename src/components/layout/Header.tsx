@@ -38,16 +38,16 @@ export function Header() {
       </a>
 
       <header
-        className={`sticky top-0 z-50 transition-all duration-300 ease-out ${
+        className={`birthday-nav sticky top-0 z-50 transition-all duration-300 ease-out ${
           scrolled
             ? 'border-b border-ink/6 bg-cream/90 shadow-header backdrop-blur-lg dark:border-white/10'
             : 'bg-cream/80 backdrop-blur-sm'
         }`}
       >
-        <div className="section-container flex items-center justify-between gap-3 py-3 sm:py-4">
+        <div className="section-container-wide flex items-center justify-between gap-3 py-3 sm:py-4">
           <Logo variant="compact" theme={theme === 'dark' ? 'dark' : 'light'} />
 
-          <nav className="hidden items-center gap-1 md:flex" aria-label="Main navigation">
+          <nav className="birthday-nav-links hidden items-center gap-1 md:flex" aria-label="Main navigation">
             {NAV_ITEMS.map((item) => (
               <NavLink
                 key={item.path}

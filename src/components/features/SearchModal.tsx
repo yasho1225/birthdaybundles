@@ -47,7 +47,11 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
         onClick={onClose}
         aria-label="Close search"
       />
-      <div className="surface relative w-full max-w-xl overflow-hidden shadow-lift">
+      <div className="birthday-search surface relative w-full max-w-xl overflow-hidden shadow-lift">
+        <div className="birthday-search-heading">
+          <p>Find your way around</p>
+          <span>Stories, ways to help, and answers are all here.</span>
+        </div>
         <div className="border-b border-ink/8 p-4 dark:border-white/10">
           <label htmlFor="site-search" className="sr-only">
             Search the site
@@ -58,7 +62,7 @@ export function SearchModal({ isOpen, onClose }: SearchModalProps) {
             type="search"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search pages, bundles, FAQ..."
+            placeholder="What can we help you find?"
             className="input-field"
             autoComplete="off"
           />

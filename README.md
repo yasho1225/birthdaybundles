@@ -4,7 +4,7 @@
 
 A production-ready website for [Birthday Bundles](https://github.com/yasho1225/birthdaybundles) — a community nonprofit that delivers complete birthday party kits (cake, decorations, gifts, and supplies) to children and families who might otherwise go without a celebration.
 
-Built with React, Vite, TypeScript, and Tailwind CSS. Designed for warmth, clarity, and easy content updates — no CMS required.
+Built with React, Vite, TypeScript, Tailwind CSS, Lenis, and GSAP. Designed as a tactile, scroll-directed story with easy content updates — no CMS required.
 
 ---
 
@@ -38,7 +38,8 @@ Open [http://localhost:5173](http://localhost:5173).
 - **Accessible** — skip links, focus rings, ARIA labels, reduced-motion support
 - **Responsive** — mobile nav, sticky header, touch-friendly UI
 - **Site search** — `⌘K` / `Ctrl+K` modal search across all content
-- **Scroll polish** — reveal animations, progress bar, back-to-top button
+- **Cinematic motion** — pinned bundle assembly, horizontal journey, photo parallax, route transitions
+- **React Bits adaptations** — magnetic actions, spotlight cards, and animated impact counters reskinned for the brand
 - **Print stylesheet** — clean output for flyers and handouts
 - **Cookie notice** — essential-only local storage disclosure
 - **UTM tracking** — campaign params appended to external donate links
