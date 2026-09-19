@@ -24,14 +24,45 @@ export function Home() {
 
     gsap.from('.proof-statement > *', { y: 28, opacity: 0, duration: 0.7, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.proof-bridge', start: 'top 72%' } })
     gsap.from('.proof-stat', { y: 34, opacity: 0, scale: 0.96, duration: 0.65, stagger: 0.08, ease: 'power2.out', scrollTrigger: { trigger: '.proof-grid', start: 'top 82%' } })
-    gsap.from('.process-rail-fill', { scaleX: 0, transformOrigin: 'left center', ease: 'none', scrollTrigger: { trigger: '.delivery-path', start: 'top 70%', end: 'bottom 70%', scrub: 0.7 } })
-    gsap.from('.process-card', { y: 30, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out', scrollTrigger: { trigger: '.process-accordion', start: 'top 78%' } })
     gsap.from('.action-route', { y: 42, opacity: 0, duration: 0.75, stagger: 0.12, ease: 'power3.out', scrollTrigger: { trigger: '.choose-part', start: 'top 72%' } })
 
     mm.add('(min-width: 900px)', () => {
+      gsap.from('.process-rail-fill', { scaleX: 0, transformOrigin: 'left center', ease: 'none', scrollTrigger: { trigger: '.delivery-path', start: 'top 70%', end: 'bottom 70%', scrub: 0.7 } })
+      gsap.from('.process-card', { y: 30, opacity: 0, duration: 0.6, stagger: 0.1, ease: 'power2.out', scrollTrigger: { trigger: '.process-accordion', start: 'top 78%' } })
       gsap.fromTo('.outcome-image img', { scale: 1.12 }, { scale: 1, ease: 'none', scrollTrigger: { trigger: '.human-outcome', start: 'top bottom', end: 'bottom top', scrub: 0.8 } })
       gsap.from('.outcome-image', { clipPath: 'inset(7% 8% 12% 8% round 2rem)', duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.human-outcome', start: 'top 76%' } })
       gsap.to('.outcome-caption', { yPercent: -20, ease: 'none', scrollTrigger: { trigger: '.human-outcome', start: 'top bottom', end: 'bottom top', scrub: 1 } })
+    })
+
+    mm.add('(max-width: 899px)', () => {
+      gsap.from('.delivery-heading > *', {
+        y: 28,
+        opacity: 0,
+        duration: 0.72,
+        stagger: 0.08,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '.delivery-heading', start: 'top 82%' },
+      })
+
+      gsap.fromTo('.process-mobile-progress',
+        { scaleY: 0 },
+        { scaleY: 1, transformOrigin: 'top center', ease: 'none', scrollTrigger: { trigger: '.process-accordion', start: 'top 76%', end: 'bottom 58%', scrub: 0.45 } },
+      )
+
+      gsap.utils.toArray<HTMLElement>('.process-card').forEach((card) => {
+        gsap.fromTo(card,
+          { y: 42, x: 10, opacity: 0.25, scale: 0.965 },
+          { y: 0, x: 0, opacity: 1, scale: 1, ease: 'power2.out', scrollTrigger: { trigger: card, start: 'top 91%', end: 'top 61%', scrub: 0.55 } },
+        )
+      })
+
+      gsap.from('.process-mobile-end', {
+        y: 24,
+        opacity: 0,
+        duration: 0.65,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: '.process-mobile-end', start: 'top 90%' },
+      })
     })
 
     return () => mm.revert()
@@ -84,6 +115,7 @@ export function Home() {
           </div>
           <div className="process-rail" aria-hidden="true"><span className="process-rail-fill" /></div>
           <div className="process-accordion">
+            <span className="process-mobile-progress" aria-hidden="true" />
             {HOW_IT_WORKS.map((step, index) => (
               <article key={step.title} className="process-card">
                 <span className="process-number">0{index + 1}</span>
@@ -91,6 +123,10 @@ export function Home() {
                 <div><h3>{step.title}</h3><p>{step.description}</p></div>
               </article>
             ))}
+          </div>
+          <div className="process-mobile-end">
+            <span><small>The next celebration can start here.</small><strong>Ready when you are.</strong></span>
+            <Link to="/request">Start a request <Icon name="arrow-right" size={17} /></Link>
           </div>
         </div>
       </section>
