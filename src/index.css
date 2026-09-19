@@ -514,10 +514,51 @@
   .outcome-image { min-height: 62svh; }
   .outcome-copy { padding-top: 1rem; }
   .editorial-carousel blockquote { min-height: 0; }
-  .process-accordion { min-height: 0; display: grid; }
-  .process-card, .process-card:hover, .process-card:focus-visible { min-height: 18rem; border: 0; border-top: 1px solid rgba(255,255,255,.2); }
+  .process-accordion {
+    min-height: 0;
+    margin-top: 2.75rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    border-bottom: 0;
+    border-left: 1px solid rgba(255,255,255,.24);
+  }
+  .process-card,
+  .process-card:hover,
+  .process-card:focus-visible {
+    position: relative;
+    min-height: 0;
+    display: grid;
+    grid-template-columns: 3.25rem minmax(0, 1fr);
+    grid-template-rows: auto auto;
+    column-gap: 1rem;
+    row-gap: .7rem;
+    padding: 1.65rem 1rem 1.8rem 1.15rem;
+    border: 0;
+    border-top: 1px solid rgba(255,255,255,.2);
+    background: transparent;
+  }
+  .process-card::before {
+    content: '';
+    position: absolute;
+    left: -.33rem;
+    top: 1.85rem;
+    width: .62rem;
+    height: .62rem;
+    border: 2px solid #126f70;
+    border-radius: 50%;
+    background: #f7bd42;
+    box-shadow: 0 0 0 .28rem rgba(247,189,66,.12);
+  }
+  .process-card:nth-child(2) { background: rgba(5,51,52,.08); }
+  .process-card:nth-child(3) { background: rgba(4,43,44,.16); }
+  .process-number { grid-column: 1; grid-row: 1; align-self: center; }
+  .process-card > svg { grid-column: 1; grid-row: 2; margin-top: .2rem; }
+  .process-card > div { grid-column: 2; grid-row: 1 / span 2; min-width: 0; }
+  .process-card h3 { max-width: 13ch; margin: 0 0 .75rem; font-size: clamp(1.75rem, 7vw, 2.35rem); line-height: .98; }
+  .process-card p { max-width: 31rem; font-size: 1rem; line-height: 1.55; }
   .process-card:last-child { border-bottom: 1px solid rgba(255,255,255,.2); }
   .process-rail { display: none; }
+  .site-back-to-top { display: none; }
   .action-routes { grid-template-columns: 1fr; }
 }
 
@@ -536,6 +577,21 @@
   .bundle-mobile-story p { min-height: 0; }
   .carousel-meta { align-items: center; }
   .action-route { min-height: 26rem; }
+  .delivery-path { padding-block: 5.5rem; }
+  .delivery-heading h2 { max-width: 12ch; font-size: clamp(2.65rem, 11vw, 3.65rem); }
+  .delivery-heading > p:last-child { font-size: 1rem; line-height: 1.58; }
+  .process-accordion { margin-top: 2.25rem; }
+  .process-card,
+  .process-card:hover,
+  .process-card:focus-visible {
+    grid-template-columns: 2.6rem minmax(0, 1fr);
+    column-gap: .75rem;
+    padding: 1.45rem .4rem 1.55rem .95rem;
+  }
+  .process-card::before { top: 1.66rem; }
+  .process-card > svg { width: 1.65rem; height: 1.65rem; }
+  .process-card h3 { max-width: none; font-size: clamp(1.65rem, 8vw, 2.15rem); }
+  .process-card p { font-size: .96rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {
