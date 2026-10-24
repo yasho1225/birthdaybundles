@@ -1,5 +1,6 @@
 import { lazy, Suspense, useEffect } from 'react'
 import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom'
+import { Analytics } from '@vercel/analytics/react'
 import { ThemeProvider } from './context/ThemeContext'
 import { Layout } from './components/layout/Layout'
 import { Home } from './pages/Home'
@@ -87,6 +88,7 @@ export default function App() {
             />
           </Route>
         </Routes>
+        <Analytics />
       </BrowserRouter>
     </ThemeProvider>
   )
